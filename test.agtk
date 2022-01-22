@@ -1,0 +1,43 @@
+Interaface : {
+    Height : 10,
+    Width  : 100,
+    Position : "CENTRE"   
+};
+
+Button : {
+    Height : 10,
+    Width  : 100,
+    Text   : "Click Me",
+    Border : 25,
+    ID     : "IDButton"
+    Color  : "BLUE",
+    Background : "RED"  
+};
+
+Label : {
+    Height : 10,
+    Width  : 100,
+    Text   : "Click Me",
+    ID     : "IDLabel"
+    Border : 25,
+    Color  : "BLUE",
+    Background : "RED"  
+};
+
+InputField : {
+    Height : 10,
+    Width  : 100,
+    Text   : "Click Me",
+    ID     : "IDInputField"
+    TextAlign : "CENTRE",
+    Border : 25,
+    Color  : "BLUE",
+    Background : "RED"  
+};
+
+Begin
+Start Interface 
+Put Button "IDButton"  100 50
+Put Label "IDLabel"  250 50
+Put InputField "IDInputField"  250 50
+End

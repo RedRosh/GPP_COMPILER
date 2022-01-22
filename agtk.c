@@ -3,9 +3,9 @@
 #include "./includes/data.h"
 #undef _extern
 #include "./includes/dcl.h"
-#include "./includes/lexer.h"
 
-int main(int argc , char* argv[] ){
+void main(int argc, char *argv[])
+{
     if (argc != 2)
     {
         logError("Please insert a file");
@@ -16,5 +16,10 @@ int main(int argc , char* argv[] ){
         logError("Could Not open the file");
         exit(1);
     }
-    printf("Hello");
+    init();
+    do
+    {
+        lexer_get_next_token();
+        logCurrentToken();
+    } while (Token->type != TOKEN_EOF);
 }

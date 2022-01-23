@@ -1,4 +1,4 @@
-Interaface : {
+Interface : {
     Height : 10,
     Width  : 100,
     Position : "CENTRE"   

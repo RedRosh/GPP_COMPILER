@@ -143,8 +143,6 @@ char *lexer_get_string()
 		strcat(value, s);
 		lexer_get_next_caracter();
 	}
-
-	lexer_get_next_caracter();
 	return value;
 }
 

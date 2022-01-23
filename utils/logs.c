@@ -46,13 +46,69 @@ void log_parser_unexpected_token(int token_type)
     blue();
     printf(" %s ", token_str[token_type]);
     red();
-    printf(": , got  < ");
+    printf(" , got  < ");
     blue();
-    printf("%s , %s ", token_str[Token->type], Token->value);
+    printf("%s ", token_str[Token->type]);
+    red();
+    printf(" , ");
+    blue();
+    printf(" %s ", Token->value);
     red();
     printf(" >, Line : ");
     blue();
     printf("% .2d  \n ", Line);
+    reset();
+}
+void log_parser_unexpected_token_attribute()
+{
+    red();
+    printf("[ Parser ] Attribute Error : Expected token ");
+    blue();
+    printf(" %s OR %s", token_str[TOKEN_STRING], token_str[TOKEN_INTLIT]);
+    red();
+    printf(" , got  < ");
+    blue();
+    printf("%s ", token_str[Token->type]);
+    red();
+    printf(" , ");
+    blue();
+    printf(" %s ", Token->value);
+    red();
+    printf(" >, Line : ");
+    blue();
+    printf("% .2d  \n ", Line);
+    reset();
+}
+void log_parser_unexpected_token_prop()
+{
+    red();
+    printf("[ Parser ] Prop Error : Expected a Prop ");
+
+    red();
+    printf(" , got  < ");
+    blue();
+    printf("%s ", token_str[Token->type]);
+    red();
+    printf(" , ");
+    blue();
+    printf(" %s ", Token->value);
+    red();
+    printf(" >, Line : ");
+    blue();
+    printf("% .2d  \n ", Line);
+    reset();
+}
+void logErrorParser(char *message)
+{
+    red();
+    printf("[ Parser ] : %s at the line :  %.2d \n", message, Line);
+    reset();
+}
+void logSuccessParser(char *message)
+{
+    green();
+    printf("[ Parser ] : %s \n", message);
+    reset();
 }
 //* Lexer Logs
 void logCurrentToken()

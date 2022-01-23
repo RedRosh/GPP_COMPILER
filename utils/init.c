@@ -2,8 +2,9 @@
 #include "../includes/data.h"
 #include "../includes/dcl.h"
 
-void init(){
+void init()
+{
     Line = 1;
-    Putback = '\n';
+    Putback = ' ';
     lexer_init();
 }

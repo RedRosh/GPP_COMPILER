@@ -17,9 +17,10 @@ void main(int argc, char *argv[])
         exit(1);
     }
     init();
-    do
-    {
-        lexer_get_next_token();
-        logCurrentToken();
-    } while (Token->type != TOKEN_EOF);
+    // do
+    // {
+    //     lexer_get_next_token();
+    //     logCurrentToken();
+    // } while (Token->type != TOKEN_EOF);
+    parser_parse();
 }

@@ -42,7 +42,8 @@ typedef struct
         TOKEN_DP,
         TOKEN_COMMA,
         TOKEN_EOF,
-        TOKEN_ERREUR
+        TOKEN_ERREUR,
+        TOKEN_IDENTIFICATEUR,
     } type;
     char *value;
 } TOKEN;

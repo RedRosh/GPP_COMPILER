@@ -1,0 +1,12 @@
+Interface interface: {
+    Height : 10,
+    Width  : 100,
+    Position : "CENTRE"   
+};
+
+Begin
+Start interface ; 
+Start interface; 
+Start interface ;
+Put  interface 10  150;
+End

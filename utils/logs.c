@@ -28,7 +28,8 @@ static char *token_str[] = {"TOKEN_INTERFACE",
                             "TOKEN_DP",
                             "TOKEN_COMMA",
                             "TOKEN_EOF",
-                            "TOKEN_ERREUR"};
+                            "TOKEN_ERREUR",
+                            "TOKEN_IDENTIFICATEUR"};
 
 //* Errors
 void logError(char *errorMessage)

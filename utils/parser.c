@@ -32,6 +32,9 @@ bool parser_eat(int token_type)
 void Program()
 {
     Widgets();
+    parser_eat(TOKEN_BEGIN);
+    Operations();
+    parser_eat(TOKEN_END);
     logSuccessParser("the file is well written");
 }
 
@@ -53,6 +56,7 @@ void widget()
     case TOKEN_INPUTFIELD:
     {
         lexer_get_next_token();
+        parser_eat(TOKEN_IDENTIFICATEUR);
         parser_eat(TOKEN_DP);
         parser_eat(TOKEN_OB);
         Props();
@@ -128,4 +132,48 @@ void attribute()
         exit(1);
     }
     }
+}
+
+void Operations()
+{
+    do
+    {
+        if (TOKEN_PV == Token->type)
+        {
+            lexer_get_next_token();
+        }
+        Operation();
+        parser_eat(TOKEN_PV);
+    } while (Token->type != TOKEN_END && Token->type != TOKEN_EOF);
+}
+void Operation()
+{
+    switch (Token->type)
+    {
+    case TOKEN_START:
+    {
+        Start();
+        break;
+    }
+    case TOKEN_PUT:
+        Put();
+        break;
+    default:
+    {
+        logErrorParser("Invalid Operation");
+        exit(1);
+    };
+    }
+}
+void Start()
+{
+    lexer_get_next_token();
+    parser_eat(TOKEN_IDENTIFICATEUR);
+}
+void Put()
+{
+    lexer_get_next_token();
+    parser_eat(TOKEN_IDENTIFICATEUR);
+    parser_eat(TOKEN_INTLIT);
+    parser_eat(TOKEN_INTLIT);
 }

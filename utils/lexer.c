@@ -217,7 +217,7 @@ void lexer_get_next_token()
 					return;
 				}
 			}
-			Token = token_init(TOKEN_ERREUR, identificateur);
+			Token = token_init(TOKEN_IDENTIFICATEUR, identificateur);
 			return;
 		}
 		Token = token_init(TOKEN_ERREUR, lexer_get_caracter_as_string());

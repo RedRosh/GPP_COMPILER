@@ -1,34 +1,34 @@
-Interface : {
+Interface interface: {
     Height : 10,
     Width  : 100,
     Position : "CENTRE"   
 };
 
-Button : {
+Button button: {
     Height : 10,
     Width  : 100,
     Text   : "Click Me",
     Border : 25,
-    ID     : "IDButton"
+    ID     : "IDButton",
     Color  : "BLUE",
     Background : "RED"  
 };
 
-Label : {
+Label label : {
     Height : 10,
     Width  : 100,
     Text   : "Click Me",
-    ID     : "IDLabel"
+    ID     : "IDLabel",
     Border : 25,
     Color  : "BLUE",
     Background : "RED"  
 };
 
-InputField : {
+InputField input : {
     Height : 10,
     Width  : 100,
     Text   : "Click Me",
-    ID     : "IDInputField"
+    ID     : "IDInputField",
     TextAlign : "CENTRE",
     Border : 25,
     Color  : "BLUE",
@@ -36,8 +36,8 @@ InputField : {
 };
 
 Begin
-Start Interface 
-Put Button "IDButton"  100 50
-Put Label "IDLabel"  250 50
-Put InputField "IDInputField"  250 50
+Start interface ;
+Put  button 100 50;
+Put  label 250 50;
+Put  input  250 50;
 End

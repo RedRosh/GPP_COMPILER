@@ -38,7 +38,23 @@ void logError(char *errorMessage)
     reset();
 }
 
-//* Logs
+//* Parser Logs
+void log_parser_unexpected_token(int token_type)
+{
+    red();
+    printf("[ Parser ] Expected token ");
+    blue();
+    printf(" %s ", token_str[token_type]);
+    red();
+    printf(": , got  < ");
+    blue();
+    printf("%s , %s ", token_str[Token->type], Token->value);
+    red();
+    printf(" >, Line : ");
+    blue();
+    printf("% .2d  \n ", Line);
+}
+//* Lexer Logs
 void logCurrentToken()
 {
     switch (Token->type)
@@ -46,7 +62,7 @@ void logCurrentToken()
     case TOKEN_ERREUR:
     {
         red();
-        printf("[ TOKEN ] : ");
+        printf("[ Lexer ] : ");
         printf("Unexpected Token");
         blue();
         printf(" %s", Token->value);
@@ -65,7 +81,7 @@ void logCurrentToken()
     default:
     {
         blue();
-        printf("[ TOKEN ] : ");
+        printf("[ Lexer ] : ");
         yellow();
         printf("the current token , type : ");
         blue();

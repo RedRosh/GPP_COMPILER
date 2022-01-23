@@ -4,13 +4,13 @@
 #include <ctype.h>
 #include <stdbool.h>
 #include "lexer.h"
+#include "parser.h"
 
 typedef struct
 {
     char c;
 
 } Lexer;
-
 
 typedef struct
 {

@@ -193,7 +193,7 @@ void lexer_get_next_token()
 			if (!strcmp(string, "____end___of______file____"))
 			{
 				red();
-				printf("[ TOKEN ] : Expected \" , the end of string that begins at %d was not found \n", BeginningOfString);
+				printf("[ Lexer ] : Expected \" , the end of string that begins at %d was not found \n", BeginningOfString);
 				reset();
 				Token = token_init(TOKEN_EOF, "End Of File");
 				return;

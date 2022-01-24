@@ -19,7 +19,7 @@ cd GPP_COMPILER
 2- _Compile the compiler_ :
 
 ```
-gcc -g *.c ./utils/*.c -o gpp
+make all
 ```
 
 3-_finally, run your test file_:

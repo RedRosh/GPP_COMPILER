@@ -1,16 +1,4 @@
-Interface interface: {
-    Height : 10,
-    Width  : 100,
-    Opacity : 1,
-    Title : "Sqsq"
-};
 
-Button button: {
-    Height : 10,
-    Width  : 100,
-    Opacity : 1,
-    Text   : "Click Me"
-};
 InputField input : {
     Height : 10,
     Width  : 100,

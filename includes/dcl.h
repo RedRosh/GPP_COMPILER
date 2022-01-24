@@ -19,9 +19,10 @@ void logPropDoesntBelongToWidget(int token_prop, int widget_type);
 //* WIDGETS
 void widget_init();
 void widget_clean();
-
+WIDGET *getTheCurrentWidget();
 //* SEMANTIC
 void addWidgetToList();
+void getAllWidgets();
 void init_sym();
 //* COLORS
 void red();

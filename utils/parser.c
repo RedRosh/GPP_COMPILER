@@ -46,17 +46,16 @@ void Program()
     // Operations();
     // parser_eat(TOKEN_END);
     logSuccessParser("the file is well written");
+    // getAllWidgets();
 }
 
 void Widgets()
 {
-
     do
     {
         widget_init();
         widget();
-        logCurrentWidget(Widget);
-        // addWidgetToList();
+        addWidgetToList();
         widget_clean();
     } while (Token->type != TOKEN_BEGIN && Token->type != TOKEN_EOF);
 }

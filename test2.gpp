@@ -1,4 +1,4 @@
-Interface interface: {
+Interface intserface: {
     Height : 10,
     Width  :15,
     Opacity : 11,
@@ -11,7 +11,8 @@ Button button: {
     Opacity : 1,
     Text   : "Click Me"
 };
-InputField input : {
+
+InputField button : {
     Height : 10,
     Width  : 100,
     Opacity : 1,

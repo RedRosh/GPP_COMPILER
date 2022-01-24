@@ -56,8 +56,17 @@ void widget_set_type()
 
 void widget_set_id(char *token_id)
 {
-    Widget->id = malloc(strlen(token_id) * sizeof(char));
-    strcpy(Widget->id, token_id);
+
+    if (!idExists(token_id))
+    {
+        Widget->id = malloc(strlen(token_id) * sizeof(char));
+        strcpy(Widget->id, token_id);
+    }
+    else
+    {
+        logSemanticError("id widget already exists");
+        exit(1);
+    }
 }
 
 void widget_set_property(int token_prop)
@@ -250,4 +259,88 @@ void widget_set_property(int token_prop)
         }
     }
     }
+}
+
+WIDGET *getTheCurrentWidget()
+{
+    WIDGET *new_widget = (WIDGET *)malloc(sizeof(WIDGET));
+    new_widget->widgetType = Widget->widgetType;
+    new_widget->height = Widget->height;
+    new_widget->width = Widget->width;
+    new_widget->opacity = Widget->opacity;
+    new_widget->id = malloc(strlen(Widget->id) * sizeof(char));
+    strcpy(new_widget->id, Widget->id);
+    switch (Widget->widgetType)
+    {
+    case INTERFACE_TYPE:
+    {
+        new_widget->type.interface = (INTERFACE *)malloc(sizeof(INTERFACE));
+        if (Widget->type.interface->title == NULL)
+        {
+            new_widget->type.interface->title = NULL;
+        }
+        else
+        {
+            new_widget->type.interface->title = malloc(strlen(Widget->type.interface->title) * sizeof(char));
+            strcpy(new_widget->type.interface->title, Widget->type.interface->title);
+        }
+        break;
+    }
+    case BUTTON_TYPE:
+    {
+        new_widget->type.button = (BUTTON *)malloc(sizeof(BUTTON));
+        if (Widget->type.button->text == NULL)
+        {
+            new_widget->type.button->text = NULL;
+        }
+        else
+        {
+            new_widget->type.button->text = malloc(strlen(Widget->type.button->text) * sizeof(char));
+            strcpy(new_widget->type.button->text, Widget->type.button->text);
+        }
+        break;
+    }
+    case LABEL_TYPE:
+    {
+        new_widget->type.label = (LABEL *)malloc(sizeof(LABEL));
+        if (Widget->type.label->text == NULL)
+        {
+            new_widget->type.label->text = NULL;
+        }
+        else
+        {
+            new_widget->type.label->text = malloc(strlen(Widget->type.label->text) * sizeof(char));
+            strcpy(new_widget->type.label->text, Widget->type.label->text);
+        }
+        new_widget->type.label->xalign = Widget->type.label->xalign;
+        new_widget->type.label->yalign = Widget->type.label->yalign;
+        new_widget->type.label->angle = Widget->type.label->angle;
+        break;
+    }
+    case INPUTFIELD_TYPE:
+    {
+        new_widget->type.inputField = (INPUTFIELD *)malloc(sizeof(INPUTFIELD));
+        if (Widget->type.inputField->text == NULL)
+        {
+            new_widget->type.inputField->text = NULL;
+        }
+        else
+        {
+            new_widget->type.inputField->text = malloc(strlen(Widget->type.inputField->text) * sizeof(char));
+            strcpy(new_widget->type.inputField->text, Widget->type.inputField->text);
+        }
+        if (Widget->type.inputField->placeholder == NULL)
+        {
+            new_widget->type.inputField->placeholder = NULL;
+        }
+        else
+        {
+            new_widget->type.inputField->placeholder = malloc(strlen(Widget->type.inputField->placeholder) * sizeof(char));
+            strcpy(new_widget->type.inputField->placeholder, Widget->type.inputField->placeholder);
+        }
+        new_widget->type.inputField->maxlength = Widget->type.inputField->maxlength;
+        break;
+    }
+    }
+    return new_widget;
 }

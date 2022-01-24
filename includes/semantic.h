@@ -1,0 +1,1 @@
+int idExists(char *widget_id);

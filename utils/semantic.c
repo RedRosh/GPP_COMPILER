@@ -2,23 +2,55 @@
 #include "../includes/data.h"
 #include "../includes/dcl.h"
 
-static int size = 1;
-static WIDGET **ListOfWidgets;
-
 void init_sym()
 {
-    ListOfWidgets = (WIDGET **)calloc(size, sizeof(WIDGET));
 }
 void addWidgetToList()
 {
-    ListOfWidgets[size - 1] = Widget;
-    realloc(*ListOfWidgets, (2 + size++) * sizeof(WIDGET));
+    WIDGETNODE *new_node_widget = (WIDGETNODE *)malloc(sizeof(struct WIDGETNODE));
+    WIDGETNODE *last = linkedWidgetList;
+    new_node_widget->widget = getTheCurrentWidget();
+    new_node_widget->next = NULL;
+    if (linkedWidgetList == NULL)
+    {
+        linkedWidgetList = new_node_widget;
+        return;
+    }
+    while (last->next != NULL)
+    {
+        last = last->next;
+    }
+    last->next = new_node_widget;
 }
 
-void getAllWidget()
+void getAllWidgets()
 {
-    for (int i = 0; i < size - 1; i++)
+    WIDGETNODE *last = linkedWidgetList;
+    if (linkedWidgetList == NULL)
     {
-        printf("width : %s \n", ListOfWidgets[i]->id);
+        printf("Empty list of widgets");
+        exit(1);
     }
+    while (last != NULL)
+    {
+        logCurrentWidget(last->widget);
+        last = last->next;
+    }
+}
+int idExists(char *widget_id)
+{
+    WIDGETNODE *current = linkedWidgetList;
+    if (linkedWidgetList == NULL)
+    {
+        return 0;
+    }
+    while (current != NULL)
+    {
+        if (!strcmp(current->widget->id, widget_id))
+        {
+            return 1;
+        }
+        current = current->next;
+    }
+    return 0;
 }

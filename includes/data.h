@@ -7,3 +7,4 @@ _extern int Putback;
 _extern int Line;
 _extern TOKEN *Token;
 _extern WIDGET *Widget;
+_extern WIDGETNODE *linkedWidgetList;

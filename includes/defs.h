@@ -106,3 +106,10 @@ typedef struct WIDGET
         INTERFACE *interface;
     } type;
 } WIDGET;
+
+typedef struct WIDGETNODE
+{
+    WIDGET *widget;
+    struct WIDGETNODE *next;
+
+} WIDGETNODE;

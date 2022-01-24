@@ -1,2 +1,2 @@
 all : 
-	gcc -g *.c ./utils/*.c -o gpp
+	gcc -g *.c ./utils/*.c -o gpp -w

@@ -2,10 +2,20 @@
 #include "../includes/data.h"
 #include "../includes/dcl.h"
 
+static TOKEN *tempToken;
+
 void parser_parse()
 {
+    tempToken = calloc(1, sizeof(TOKEN));
+    init_sym();
     lexer_get_next_token();
     Program();
+}
+void update_token()
+{
+    tempToken->type = Token->type;
+    tempToken->value = malloc(strlen(Token->value) * sizeof(char));
+    strcpy(tempToken->value, Token->value);
 }
 
 bool parser_eat(int token_type)
@@ -21,28 +31,33 @@ bool parser_eat(int token_type)
         log_parser_unexpected_token(token_type);
         exit(1);
     }
-    else
-    {
-        success = true;
-    }
+    success = true;
+    update_token();
     lexer_get_next_token();
+
     return success;
 }
 
 void Program()
 {
+
     Widgets();
-    parser_eat(TOKEN_BEGIN);
-    Operations();
-    parser_eat(TOKEN_END);
+    // parser_eat(TOKEN_BEGIN);
+    // Operations();
+    // parser_eat(TOKEN_END);
     logSuccessParser("the file is well written");
 }
 
 void Widgets()
 {
+
     do
     {
+        widget_init();
         widget();
+        logCurrentWidget(Widget);
+        // addWidgetToList();
+        widget_clean();
     } while (Token->type != TOKEN_BEGIN && Token->type != TOKEN_EOF);
 }
 
@@ -55,8 +70,10 @@ void widget()
     case TOKEN_LABEL:
     case TOKEN_INPUTFIELD:
     {
+        widget_set_type();
         lexer_get_next_token();
         parser_eat(TOKEN_IDENTIFICATEUR);
+        widget_set_id(tempToken->value);
         parser_eat(TOKEN_DP);
         parser_eat(TOKEN_OB);
         Props();
@@ -97,10 +114,19 @@ void prop()
     case TOKEN_COLOR:
     case TOKEN_POSITION:
     case TOKEN_SIZE:
+    case TOKEN_TITLE:
+    case TOKEN_OPACITY:
+    case TOKEN_ANGLE:
+    case TOKEN_XALIGN:
+    case TOKEN_PLACEHOLDER:
+    case TOKEN_YALIGN:
+    case TOKEN_MAXLENGTH:
     {
+        int TOKEN_PROP = Token->type;
         lexer_get_next_token();
         parser_eat(TOKEN_DP);
         attribute();
+        widget_set_property(TOKEN_PROP);
         lexer_get_next_token();
         break;
     }

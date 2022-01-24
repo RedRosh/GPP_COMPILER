@@ -8,3 +8,4 @@ void Operations();
 void Operation();
 void Put();
 void Start();
+void update_token();

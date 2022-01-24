@@ -6,3 +6,4 @@ _extern FILE *inFile;
 _extern int Putback;
 _extern int Line;
 _extern TOKEN *Token;
+_extern WIDGET *Widget;

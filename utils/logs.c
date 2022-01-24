@@ -16,6 +16,13 @@ static char *token_str[] = {"TOKEN_INTERFACE",
                             "TOKEN_WIDTH",
                             "TOKEN_HEIGHT",
                             "TOKEN_TEXTALIGN",
+                            "TOKEN_OPACITY",
+                            "TOKEN_TITLE",
+                            "TOKEN_ANGLE",
+                            "TOKEN_XALIGN",
+                            "TOKEN_YALIGN",
+                            "TOKEN_PLACEHOLDER",
+                            "TOKEN_MAXLENGTH",
                             "TOKEN_BEGIN",
                             "TOKEN_END",
                             "TOKEN_START",
@@ -30,7 +37,10 @@ static char *token_str[] = {"TOKEN_INTERFACE",
                             "TOKEN_EOF",
                             "TOKEN_ERREUR",
                             "TOKEN_IDENTIFICATEUR"};
-
+static char *widget_type_str[] = {"INPUTFIELD_TYPE",
+                                  "LABEL_TYPE",
+                                  "BUTTON_TYPE",
+                                  "INTERFACE_TYPE"};
 //* Errors
 void logError(char *errorMessage)
 {
@@ -38,7 +48,6 @@ void logError(char *errorMessage)
     printf("[ Error ] : %s \n", errorMessage);
     reset();
 }
-
 //* Parser Logs
 void log_parser_unexpected_token(int token_type)
 {
@@ -150,4 +159,107 @@ void logCurrentToken()
     }
     }
     reset();
+}
+
+//* Semantic logs
+void logSemantic(char *message)
+{
+    blue();
+    printf("[ Semantic ] : ");
+    yellow();
+    printf("%s \n", message);
+    reset();
+}
+void logPropertiesStringSemantic(char *prop, char *attribute)
+{
+    if (attribute != NULL)
+    {
+        blue();
+        printf("\t\t\t %s ", prop);
+        yellow();
+        printf(": ");
+        cyan();
+        printf("%s", attribute);
+        yellow();
+        printf(" ; \n");
+        reset();
+    }
+}
+void logPropertiesIntegerSemantic(char *prop, int attribute)
+{
+    if (attribute != -1)
+    {
+        blue();
+        printf("\t\t\t %s ", prop);
+        yellow();
+        printf(": ");
+        cyan();
+        printf("%d", attribute);
+        yellow();
+        printf(" ; \n");
+        reset();
+    }
+}
+void logPropDoesntBelongToWidget(int token_prop, int widget_type)
+{
+    red();
+    printf("[ Semantic ] : ");
+    printf(" this prop ");
+    cyan();
+    printf("%s ", token_str[token_prop]);
+    red();
+    printf("Does not belong to this Widget type ");
+    cyan();
+    printf("%s ", widget_type_str[widget_type]);
+    red();
+    printf("at Line : ");
+    yellow();
+    printf("%d \n", Line);
+    reset();
+}
+
+void logSemanticError(char *message)
+{
+    red();
+    printf("[ Semantic ] : %s at Line :", message);
+    yellow();
+    printf(" %d \n", Line);
+    reset();
+}
+void logCurrentWidget(WIDGET *widget)
+{
+    logSemantic("The Current widget :");
+    logPropertiesStringSemantic("Id", widget->id);
+    logPropertiesStringSemantic("Type", widget_type_str[widget->widgetType]);
+    logPropertiesIntegerSemantic("Height", widget->height);
+    logPropertiesIntegerSemantic("Width", widget->width);
+    logPropertiesIntegerSemantic("Opacity", widget->opacity);
+    switch (widget->widgetType)
+    {
+    case INTERFACE_TYPE:
+    {
+        logPropertiesStringSemantic("Title", widget->type.interface->title);
+        break;
+    }
+    case BUTTON_TYPE:
+    {
+        logPropertiesStringSemantic("Text", widget->type.button->text);
+        break;
+    }
+    case LABEL_TYPE:
+    {
+        logPropertiesStringSemantic("Text", widget->type.label->text);
+        logPropertiesIntegerSemantic("Xalign", widget->type.label->xalign);
+        logPropertiesIntegerSemantic("Yalign", widget->type.label->yalign);
+        logPropertiesIntegerSemantic("Angle", widget->type.label->angle);
+        break;
+    }
+    case INPUTFIELD_TYPE:
+    {
+        logPropertiesStringSemantic("Text", widget->type.inputField->text);
+        logPropertiesStringSemantic("PlaceHolder", widget->type.inputField->placeholder);
+        logPropertiesIntegerSemantic("MaxLength", widget->type.inputField->maxlength);
+        break;
+    }
+    }
 }

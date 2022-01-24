@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     add_element_to_window(fixed, button, 10, 50);
     add_element_to_window(fixed, button2, 100, 50);
     gtk_widget_show_all(window);
-    g_signal_connect(G_OBJECT(window), "destroy",
+    g_signal_connect(G_OBJET(window), "destroy",
                      G_CALLBACK(gtk_main_quit), NULL);
 
     gtk_main();

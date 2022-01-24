@@ -1,12 +1,31 @@
 Interface interface: {
     Height : 10,
-    Width  : 100,
-    Position : "CENTRE"   
+    Width  :15,
+    Opacity : 11,
+    Title : "Sqsq"
 };
 
-Begin
-Start interface ; 
-Start interface; 
-Start interface ;
-Put  interface 10  150;
-End
+Button button: {
+    Height : 10,
+    Width  : 100,
+    Opacity : 1,
+    Text   : "Click Me"
+};
+InputField input : {
+    Height : 10,
+    Width  : 100,
+    Opacity : 1,
+    Text   : "Click Me",
+    PlaceHolder : "Yay",
+    MaxLength : 10
+};
+Label label : {
+    Height : 10,
+    Width  : 100,
+    Text   : "Click Me",
+    Angle : 50,
+    Xalign : 21,
+    Opacity : 1,
+    Yalign : 15
+};
+

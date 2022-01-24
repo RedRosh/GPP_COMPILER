@@ -9,12 +9,26 @@ void log_parser_unexpected_token_attribute();
 void log_parser_unexpected_token_prop();
 void logErrorParser(char *message);
 void logSuccessParser(char *message);
+void logCurrentWidget(WIDGET *widget);
+void logSemantic(char *message);
+void logPropertiesStringSemantic(char *prop, char *attribute);
+void logPropertiesIntegerSemantic(char *prop, int attribute);
+void logSemanticError(char *message);
+void logPropDoesntBelongToWidget(int token_prop, int widget_type);
 
+//* WIDGETS
+void widget_init();
+void widget_clean();
+
+//* SEMANTIC
+void addWidgetToList();
+void init_sym();
 //* COLORS
 void red();
 void yellow();
 void green();
 void blue();
+void cyan();
 void reset();
 
 //* LEXER

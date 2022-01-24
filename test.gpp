@@ -1,43 +1,30 @@
 Interface interface: {
     Height : 10,
     Width  : 100,
-    Position : "CENTRE"   
+    Opacity : 1,
+    Title : "Sqsq"
 };
 
 Button button: {
     Height : 10,
     Width  : 100,
-    Text   : "Click Me",
-    Border : 25,
-    ID     : "IDButton",
-    Color  : "BLUE",
-    Background : "RED"  
+    Opacity : 1,
+    Text   : "Click Me"
 };
-
+InputField input : {
+    Height : 10,
+    Width  : 100,
+    Opacity : 1,
+    Text   : "Click Me",
+    PlaceHolder : "Yay",
+    MaxLength : 10
+};
 Label label : {
     Height : 10,
     Width  : 100,
     Text   : "Click Me",
-    ID     : "IDLabel",
-    Border : 25,
-    Color  : "BLUE",
-    Background : "RED"  
+    Angle : 50,
+    Xalign : 21,
+    Opacity : 1,
+    Yalign : 15
 };
-
-InputField input : {
-    Height : 10,
-    Width  : 100,
-    Text   : "Click Me",
-    ID     : "IDInputField",
-    TextAlign : "CENTRE",
-    Border : 25,
-    Color  : "BLUE",
-    Background : "RED"  
-};
-
-Begin
-Start interface ;
-Put  button 100 50;
-Put  label 250 50;
-Put  input  250 50;
-End

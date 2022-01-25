@@ -42,11 +42,13 @@ void Program()
 {
 
     Widgets();
+    getAllWidgets();
+    convert_widget_to_gtk_widget();
+    getAllGtkWidget();
     // parser_eat(TOKEN_BEGIN);
     // Operations();
     // parser_eat(TOKEN_END);
     logSuccessParser("the file is well written");
-    // getAllWidgets();
 }
 
 void Widgets()

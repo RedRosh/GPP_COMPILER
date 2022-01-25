@@ -1,0 +1,11 @@
+void set_widget_opacity(GtkWidget *gtk_widget, WIDGET *widget);
+void set_widget_height_width(GtkWidget *gtk_widget, WIDGET *widget);
+void set_widget_title(GtkWidget *gtk_widget, WIDGET *widget);
+void set_widget_name(GtkWidget *gtk_widget, WIDGET *widget);
+void set_widget_angle(GtkWidget *gtk_widget, WIDGET *widget);
+void set_widget_yalign(GtkWidget *gtk_widget, WIDGET *widget);
+void set_widget_xalign(GtkWidget *gtk_widget, WIDGET *widget);
+void set_widget_maxlength(GtkWidget *gtk_widget, WIDGET *widget);
+void set_widget_placeholder(GtkWidget *gtk_widget, WIDGET *widget);
+void addGtkWidgetToList(WIDGET *widget);
+GtkWidget *create_gtk_widget(WIDGET *widget);

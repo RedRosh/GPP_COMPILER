@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <gtk/gtk.h>
 #include "lexer.h"
 #include "parser.h"
 #include "widget.h"
@@ -13,7 +14,13 @@ typedef struct
     char c;
 
 } Lexer;
-
+typedef enum
+{
+    INPUTFIELD_TYPE,
+    LABEL_TYPE,
+    BUTTON_TYPE,
+    INTERFACE_TYPE
+} WidgetType;
 typedef struct
 {
     enum
@@ -88,13 +95,7 @@ typedef struct
 typedef struct WIDGET
 {
     int height;
-    enum widgetType
-    {
-        INPUTFIELD_TYPE,
-        LABEL_TYPE,
-        BUTTON_TYPE,
-        INTERFACE_TYPE
-    } widgetType;
+    WidgetType widgetType;
     int width;
     char *id;
     int opacity;
@@ -113,3 +114,11 @@ typedef struct WIDGETNODE
     struct WIDGETNODE *next;
 
 } WIDGETNODE;
+
+typedef struct GTKWIDGETNODE
+{
+    char *id;
+    WidgetType widgetType;
+    GtkWidget *gtk_widget;
+    struct GTKWIDGETNODE *next;
+} GTKWIDGETNODE;

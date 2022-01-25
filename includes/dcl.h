@@ -20,10 +20,17 @@ void logPropDoesntBelongToWidget(int token_prop, int widget_type);
 void widget_init();
 void widget_clean();
 WIDGET *getTheCurrentWidget();
+
 //* SEMANTIC
 void addWidgetToList();
 void getAllWidgets();
 void init_sym();
+
+//* GTK
+void show_widget(GtkWidget *gtk_widget);
+void launch_gtk();
+void convert_widget_to_gtk_widget();
+void getAllGtkWidget();
 //* COLORS
 void red();
 void yellow();

@@ -8,3 +8,4 @@ _extern int Line;
 _extern TOKEN *Token;
 _extern WIDGET *Widget;
 _extern WIDGETNODE *linkedWidgetList;
+_extern GTKWIDGETNODE *linkedGtkWidgetList;

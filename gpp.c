@@ -16,6 +16,7 @@ void main(int argc, char *argv[])
         logError("Could Not open the file");
         exit(1);
     }
+    gtk_init(&argc, &argv);
     init();
     // do
     // {

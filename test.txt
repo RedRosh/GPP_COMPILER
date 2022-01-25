@@ -1,5 +1,6 @@
 #include <gtk/gtk.h>
 void add_element_to_window(GtkWidget *window, GtkWidget *button, int x, int y);
+void add_launch_gtk();
 int main(int argc, char *argv[])
 {
 
@@ -8,7 +9,7 @@ int main(int argc, char *argv[])
     GtkWidget *button2;
     GtkWidget *fixed;
 
-    gtk_init(&argc, &argv);
+   
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(window), "Tooltip");
     gtk_window_set_default_size(GTK_WINDOW(window), 300, 200);
@@ -23,15 +24,16 @@ int main(int argc, char *argv[])
     add_element_to_window(fixed, button, 10, 50);
     add_element_to_window(fixed, button2, 100, 50);
     gtk_widget_show_all(window);
-    g_signal_connect(G_OBJET(window), "destroy",
-                     G_CALLBACK(gtk_main_quit), NULL);
-
-    gtk_main();
-
+    add_launch_gtk();
     return 0;
 }
 
 void add_element_to_window(GtkWidget *fixed, GtkWidget *button, int x, int y)
 {
     gtk_fixed_put(GTK_FIXED(fixed), button, x, y);
+}
+
+void add_launch_gtk()
+{
+    gtk_main();
 }

@@ -4,15 +4,13 @@ Interface intserface: {
     Opacity : 11,
     Title : "Sqsq"
 };
-
 Button button: {
     Height : 10,
     Width  : 100,
     Opacity : 1,
     Text   : "Click Me"
 };
-
-InputField button : {
+InputField input : {
     Height : 10,
     Width  : 100,
     Opacity : 1,
@@ -23,10 +21,8 @@ InputField button : {
 Label label : {
     Height : 10,
     Width  : 100,
-    Text   : "Click Me",
     Angle : 50,
     Xalign : 21,
-    Opacity : 1,
+    Opacity : 10,
     Yalign : 15
 };
-

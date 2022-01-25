@@ -3,6 +3,10 @@
 #include "../includes/dcl.h"
 #include "../includes/agtk.h"
 
+void executeQuery()
+{
+}
+
 void convert_widget_to_gtk_widget()
 {
 

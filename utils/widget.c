@@ -16,10 +16,16 @@ void widget_clean()
 
 void widget_set_type()
 {
+
     switch (Token->type)
     {
     case TOKEN_INTERFACE:
     {
+        if (interfaceExists())
+        {
+            logSemanticError("only one interface should exists");
+            exit(1);
+        }
         Widget->widgetType = INTERFACE_TYPE;
         Widget->type.interface = calloc(1, sizeof(INTERFACE));
         Widget->type.interface->title = NULL;

@@ -7,7 +7,6 @@ static TOKEN *tempToken;
 void parser_parse()
 {
     tempToken = calloc(1, sizeof(TOKEN));
-    init_sym();
     lexer_get_next_token();
     Program();
 }
@@ -34,7 +33,6 @@ bool parser_eat(int token_type)
     success = true;
     update_token();
     lexer_get_next_token();
-
     return success;
 }
 
@@ -44,10 +42,10 @@ void Program()
     Widgets();
     getAllWidgets();
     convert_widget_to_gtk_widget();
-    getAllGtkWidget();
-    // parser_eat(TOKEN_BEGIN);
-    // Operations();
-    // parser_eat(TOKEN_END);
+    parser_eat(TOKEN_BEGIN);
+    Operations();
+    getAllOperations();
+    parser_eat(TOKEN_END);
     logSuccessParser("the file is well written");
 }
 
@@ -169,22 +167,37 @@ void Operations()
         {
             lexer_get_next_token();
         }
+        operation_init();
         Operation();
         parser_eat(TOKEN_PV);
+        addOperationToList();
+        clean_operation();
     } while (Token->type != TOKEN_END && Token->type != TOKEN_EOF);
 }
 void Operation()
 {
     switch (Token->type)
     {
+
     case TOKEN_START:
+    case TOKEN_PUT:
+    case TOKEN_SHOW:
+    case TOKEN_DESTROY:
     {
-        Start();
+        set_operation_type();
+        lexer_get_next_token();
+        parser_eat(TOKEN_IDENTIFICATEUR);
+        set_operation_id(tempToken->value);
+        params();
         break;
     }
-    case TOKEN_PUT:
-        Put();
+    case TOKEN_SLEEP:
+    {
+        set_operation_type();
+        lexer_get_next_token();
+        params();
         break;
+    }
     default:
     {
         logErrorParser("Invalid Operation");
@@ -192,15 +205,46 @@ void Operation()
     };
     }
 }
-void Start()
+
+params()
 {
-    lexer_get_next_token();
-    parser_eat(TOKEN_IDENTIFICATEUR);
-}
-void Put()
-{
-    lexer_get_next_token();
-    parser_eat(TOKEN_IDENTIFICATEUR);
-    parser_eat(TOKEN_INTLIT);
-    parser_eat(TOKEN_INTLIT);
+    switch (Token->type)
+    {
+    case TOKEN_STRING:
+    {
+        set_query_params(Token->value);
+        lexer_get_next_token();
+        break;
+    }
+    case TOKEN_INTLIT:
+    {
+        int x = atoi(Token->value);
+        lexer_get_next_token();
+        switch (Token->type)
+        {
+        case TOKEN_INTLIT:
+        {
+            parser_eat(TOKEN_INTLIT);
+            set_position_params(x, atoi(tempToken->value));
+            break;
+        }
+        case TOKEN_PV:
+        {
+            set_sleep_params(x);
+            break;
+        }
+        }
+        break;
+    }
+    case TOKEN_PV:
+    {
+        check_operation();
+        break;
+    }
+    default:
+    {
+        logErrorParser("Invalid params");
+        exit(1);
+    }
+    }
 }

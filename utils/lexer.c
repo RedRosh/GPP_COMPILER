@@ -29,7 +29,9 @@ static int token_keyword[] = {
 	TOKEN_END,
 	TOKEN_START,
 	TOKEN_PUT,
-};
+	TOKEN_SHOW,
+	TOKEN_DESTROY,
+	TOKEN_SLEEP};
 static char *keyword[] = {
 	"Interface",
 	"InputField",
@@ -56,7 +58,9 @@ static char *keyword[] = {
 	"End",
 	"Start",
 	"Put",
-};
+	"Show",
+	"Destroy",
+	"Sleep"};
 
 void lexer_init()
 {

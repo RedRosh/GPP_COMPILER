@@ -27,6 +27,9 @@ static char *token_str[] = {"TOKEN_INTERFACE",
                             "TOKEN_END",
                             "TOKEN_START",
                             "TOKEN_PUT",
+                            "TOKEN_SHOW",
+                            "TOKEN_DESTROY",
+                            "TOKEN_SLEEP",
                             "TOKEN_INTLIT",
                             "TOKEN_STRING",
                             "TOKEN_OB",
@@ -41,6 +44,12 @@ static char *widget_type_str[] = {"INPUTFIELD_TYPE",
                                   "LABEL_TYPE",
                                   "BUTTON_TYPE",
                                   "INTERFACE_TYPE"};
+static char *operation_type_str[] = {
+    "START_TYPE",
+    "SHOW_TYPE",
+    "PUT_TYPE",
+    "DESTROY_TYPE",
+    "SLEEP_TYPE"};
 //* Errors
 void logError(char *errorMessage)
 {
@@ -260,6 +269,52 @@ void logCurrentWidget(WIDGET *widget)
         logPropertiesStringSemantic("PlaceHolder", widget->type.inputField->placeholder);
         logPropertiesIntegerSemantic("MaxLength", widget->type.inputField->maxlength);
         break;
+    }
+    }
+}
+
+//* OPERATIONS LOGS
+void logOperationNeedParams(int operation_type)
+{
+    red();
+    printf("[ Semantic ] : this operation of type");
+    blue();
+    printf(" %s", operation_type_str[operation_type]);
+    red();
+    printf(" needs params at Line :");
+    yellow();
+    printf(" %d \n", Line);
+    reset();
+}
+
+void logCurrentOperation(OPERATION *operation)
+{
+    logSemantic("The Current Operation :");
+    logPropertiesStringSemantic("type", operation_type_str[operation->OperationType]);
+    switch (operation->OperationType)
+    {
+    case START_TYPE:
+    {
+        logPropertiesStringSemantic("id_widget", operation->id_widget);
+        logPropertiesStringSemantic("query", operation->params.query);
+        break;
+    }
+    case PUT_TYPE:
+    {
+        logPropertiesStringSemantic("id_widget", operation->id_widget);
+        logPropertiesIntegerSemantic("x", operation->params.position->x);
+        logPropertiesIntegerSemantic("y", operation->params.position->y);
+        break;
+    }
+    case SLEEP_TYPE:
+    {
+        logPropertiesIntegerSemantic("sleep", operation->params.sleep);
+        break;
+    }
+    default:
+    {
+        logPropertiesStringSemantic("id_widget", operation->id_widget);
+        logPropertiesStringSemantic("Info", "No Params for this operation");
     }
     }
 }

@@ -4,6 +4,7 @@ Interface intserface: {
     Opacity : 11,
     Title : "Sqsq"
 };
+
 Button button: {
     Height : 10,
     Width  : 100,
@@ -26,3 +27,10 @@ Label label : {
     Opacity : 10,
     Yalign : 15
 };
+Begin
+Start intserface "MOUSE" ;
+Put label 10 10;
+Sleep 10  ;
+Destroy label;
+Show intserface;
+End

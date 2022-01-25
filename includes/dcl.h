@@ -15,7 +15,8 @@ void logPropertiesStringSemantic(char *prop, char *attribute);
 void logPropertiesIntegerSemantic(char *prop, int attribute);
 void logSemanticError(char *message);
 void logPropDoesntBelongToWidget(int token_prop, int widget_type);
-
+void logCurrentOperation(OPERATION *operation);
+void logOperationNeedParams(int operation_type);
 //* WIDGETS
 void widget_init();
 void widget_clean();
@@ -24,6 +25,8 @@ WIDGET *getTheCurrentWidget();
 //* SEMANTIC
 void addWidgetToList();
 void getAllWidgets();
+void getAllOperations();
+void addOperationToList();
 void init_sym();
 
 //* GTK
@@ -31,6 +34,17 @@ void show_widget(GtkWidget *gtk_widget);
 void launch_gtk();
 void convert_widget_to_gtk_widget();
 void getAllGtkWidget();
+
+//* OPERATION
+void operation_init();
+void clean_operation();
+void set_operation_type();
+void set_operation_id(char *widget_id);
+void set_query_params(char *query);
+void check_operation();
+void set_position_params(int x, int y);
+void set_sleep_params(int sleep);
+OPERATION *getTheCurrentOperation();
 //* COLORS
 void red();
 void yellow();

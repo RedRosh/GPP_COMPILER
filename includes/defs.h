@@ -50,6 +50,9 @@ typedef struct
         TOKEN_END,
         TOKEN_START,
         TOKEN_PUT,
+        TOKEN_SHOW,
+        TOKEN_DESTROY,
+        TOKEN_SLEEP,
         TOKEN_INTLIT,
         TOKEN_STRING,
         TOKEN_OB,
@@ -122,3 +125,36 @@ typedef struct GTKWIDGETNODE
     GtkWidget *gtk_widget;
     struct GTKWIDGETNODE *next;
 } GTKWIDGETNODE;
+
+typedef struct POSITION
+{
+    int x;
+    int y;
+} POSITION;
+
+typedef enum OPERATIONTYPE
+{
+    START_TYPE,
+    SHOW_TYPE,
+    PUT_TYPE,
+    DESTROY_TYPE,
+    SLEEP_TYPE
+} OPERATIONTYPE;
+
+typedef struct OPERATION
+{
+    OPERATIONTYPE OperationType;
+    char *id_widget;
+    union
+    {
+        int sleep;
+        char *query;
+        POSITION *position;
+    } params;
+} OPERATION;
+
+typedef struct OPERATIONNODE
+{
+    OPERATION *operation;
+    struct OPERATIONNODE *next;
+} OPERATIONNODE;

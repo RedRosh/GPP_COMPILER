@@ -5,6 +5,66 @@
 
 void executeQuery()
 {
+    OPERATIONNODE *last = linkedOperationList;
+    if (linkedOperationList == NULL)
+    {
+        printf("Empty list of Operations");
+        exit(1);
+    }
+    while (last != NULL)
+    {
+        switch (last->operation->OperationType)
+        {
+        case START_TYPE:
+        {
+            executeStartOperation(last->operation);
+            break;
+        }
+        case SHOW_TYPE:
+        {
+            executeShowOperation(last->operation);
+            break;
+        }
+        case PUT_TYPE:
+        {
+            executePutOperation(last->operation);
+            break;
+        }
+        }
+        last = last->next;
+    }
+    launch_gtk();
+}
+void executePutOperation(OPERATION *operation)
+{
+    WIDGET *widget = getWidgetById(operation->id_widget);
+    switch (widget->widgetType)
+    {
+    case INTERFACE_TYPE:
+    {
+        gtk_window_move(GTK_WINDOW(getGtkWidgetById(operation->id_widget)), operation->params.position->x, operation->params.position->y);
+        break;
+    }
+    default:
+    {
+        gtk_fixed_put(getGtkWidgetById("__FIXED"), getGtkWidgetById(operation->id_widget), operation->params.position->x, operation->params.position->y);
+    }
+    }
+}
+void executeShowOperation(OPERATION *operation)
+{
+    gtk_widget_show_all(getGtkWidgetById(operation->id_widget));
+}
+void executeStartOperation(OPERATION *operation)
+{
+    if (!strcmp(operation->params.query, "CENTER"))
+    {
+        gtk_window_set_position(GTK_WINDOW(getGtkWidgetById(operation->id_widget)), GTK_WIN_POS_CENTER_ALWAYS);
+    }
+    else
+    {
+        gtk_window_set_position(GTK_WINDOW(getGtkWidgetById(operation->id_widget)), GTK_WIN_POS_MOUSE);
+    }
 }
 
 void convert_widget_to_gtk_widget()
@@ -21,6 +81,7 @@ void convert_widget_to_gtk_widget()
         addGtkWidgetToList(last->widget);
         last = last->next;
     }
+    add_fixed_container_from_interface_to_List();
 }
 
 void addGtkWidgetToList(WIDGET *widget)
@@ -52,6 +113,7 @@ GtkWidget *create_gtk_widget(WIDGET *widget)
     case INTERFACE_TYPE:
     {
         gtk_widget = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+        set_widget_title(gtk_widget, widget);
         break;
     }
     case LABEL_TYPE:
@@ -83,7 +145,29 @@ GtkWidget *create_gtk_widget(WIDGET *widget)
     set_widget_name(gtk_widget, widget);
     return gtk_widget;
 }
-
+void add_fixed_container_from_interface_to_List()
+{
+    GTKWIDGETNODE *new_node_gtk_widget = (GTKWIDGETNODE *)malloc(sizeof(struct GTKWIDGETNODE));
+    GTKWIDGETNODE *last = linkedGtkWidgetList;
+    new_node_gtk_widget->widgetType = INTERFACE_TYPE;
+    new_node_gtk_widget->id = "__FIXED";
+    new_node_gtk_widget->next = NULL;
+    if (linkedGtkWidgetList == NULL)
+    {
+        linkedGtkWidgetList = new_node_gtk_widget;
+        return;
+    }
+    while (last->next != NULL)
+    {
+        if (last->widgetType == INTERFACE_TYPE)
+        {
+            new_node_gtk_widget->gtk_widget = gtk_fixed_new();
+            gtk_container_add(GTK_CONTAINER(last->gtk_widget), new_node_gtk_widget->gtk_widget);
+        }
+        last = last->next;
+    }
+    last->next = new_node_gtk_widget;
+}
 void getAllGtkWidget()
 {
     GTKWIDGETNODE *last = linkedGtkWidgetList;
@@ -170,6 +254,7 @@ void set_widget_title(GtkWidget *gtk_widget, WIDGET *widget)
         gtk_window_set_title(gtk_widget, widget->type.interface->title);
     }
 }
+
 void set_widget_opacity(GtkWidget *gtk_widget, WIDGET *widget)
 {
     if (widget->opacity != -1)
@@ -202,4 +287,23 @@ void show_widget(GtkWidget *gtk_widget)
 void launch_gtk()
 {
     gtk_main();
+}
+
+GtkWidget *getGtkWidgetById(char *gtk_widget_id)
+{
+    GTKWIDGETNODE *last = linkedGtkWidgetList;
+    if (linkedGtkWidgetList == NULL)
+    {
+        printf("Empty list of gtk widgets");
+        exit(1);
+    }
+    while (last != NULL)
+    {
+        if (!strcmp(last->id, gtk_widget_id))
+        {
+            return last->gtk_widget;
+        }
+        last = last->next;
+    }
+    return NULL;
 }

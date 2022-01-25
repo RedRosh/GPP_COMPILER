@@ -350,3 +350,22 @@ WIDGET *getTheCurrentWidget()
     }
     return new_widget;
 }
+
+WIDGET *getWidgetById(char *widget_id)
+{
+    WIDGETNODE *last = linkedWidgetList;
+    if (linkedWidgetList == NULL)
+    {
+        printf("Empty list of widgets");
+        exit(1);
+    }
+    while (last != NULL)
+    {
+        if (!strcmp(last->widget->id, widget_id))
+        {
+            return last->widget;
+        }
+        last = last->next;
+    }
+    return NULL;
+}

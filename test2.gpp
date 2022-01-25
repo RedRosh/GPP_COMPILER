@@ -1,32 +1,34 @@
-Interface intserface: {
-    Height : 10,
-    Width  :15,
-    Opacity : 11,
-    Title : "Sqsq"
+Interface interface: {
+    Height : 400,
+    Width  :500,
+    Title : "App"
+};
+Label label: {
+    Height : 40,
+    Width  :20,
+    Opacity : 100,
+    Text : "label here"
+};
+
+Label label2: {
+    Height : 40,
+    Width  :20,
+    Opacity : 50,
+    Text : "label here too but with less opacity"
 };
 
 Button button: {
-    Height : 10,
-    Width  : 100,
-    Opacity : 1,
-    Text   : "Click Me"
+    Height : 40,
+    Width  :20,
+    Opacity : 100,
+    Text : "Click Me"
 };
-InputField input : {
-    Height : 10,
-    Width  : 100,
-    Opacity : 1,
-    Text   : "Click Me",
-    PlaceHolder : "Yay",
-    MaxLength : 10
-};
-Label label : {
-    Height : 10,
-    Width  : 100,
-    Angle : 50,
-    Xalign : 21,
-    Opacity : 10,
-    Yalign : 15
-};
+
+
 Begin
-Start intserface "MOUSE" ;
+Start interface "CENTER" ;
+Put label 10 0;
+Put label2 50 50;
+Put button 10 200;
+Show interface;
 End

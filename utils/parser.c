@@ -46,6 +46,7 @@ void Program()
     Operations();
     getAllOperations();
     parser_eat(TOKEN_END);
+    executeQuery();
     logSuccessParser("the file is well written");
 }
 

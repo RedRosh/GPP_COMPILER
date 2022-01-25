@@ -21,6 +21,7 @@ void logOperationNeedParams(int operation_type);
 void widget_init();
 void widget_clean();
 WIDGET *getTheCurrentWidget();
+WIDGET *getWidgetById(char *widget_id);
 
 //* SEMANTIC
 void addWidgetToList();
@@ -34,7 +35,7 @@ void show_widget(GtkWidget *gtk_widget);
 void launch_gtk();
 void convert_widget_to_gtk_widget();
 void getAllGtkWidget();
-
+void executeQuery();
 //* OPERATION
 void operation_init();
 void clean_operation();

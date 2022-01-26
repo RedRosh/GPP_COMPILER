@@ -23,6 +23,27 @@ static char *token_str[] = {"TOKEN_INTERFACE",
                             "TOKEN_YALIGN",
                             "TOKEN_PLACEHOLDER",
                             "TOKEN_MAXLENGTH",
+                            "TOKEN_FONTSIZE",
+                            "TOKEN_FONTSTYLE",
+                            "TOKEN_FONTWEIGHT",
+                            "TOKEN_BACKGROUNDCOLOR",
+                            "TOKEN_LETTERSPACING",
+                            "TOKEN_TEXTDECORATIONLINE",
+                            "TOKEN_TEXTDECORATIONSTYLE",
+                            "TOKEN_MARGINTOP",
+                            "TOKEN_MARGINLEFT",
+                            "TOKEN_MARGINRIGHT",
+                            "TOKEN_MARGINBOTTOM",
+                            "TOKEN_PADDINGTOP",
+                            "TOKEN_PADDINGLEFT",
+                            "TOKEN_PADDINGRIGHT",
+                            "TOKEN_PADDINGBOTTOM",
+                            "TOKEN_MINWIDTH",
+                            "TOKEN_MINHEIGHT",
+                            "TOKEN_BORDERWIDTH",
+                            "TOKEN_BORDERRADIUS",
+                            "TOKEN_BORDERSTYLE",
+                            "TOKEN_BORDERCOLOR",
                             "TOKEN_BEGIN",
                             "TOKEN_END",
                             "TOKEN_START",
@@ -243,6 +264,28 @@ void logCurrentWidget(WIDGET *widget)
     logPropertiesIntegerSemantic("Height", widget->height);
     logPropertiesIntegerSemantic("Width", widget->width);
     logPropertiesIntegerSemantic("Opacity", widget->opacity);
+    logPropertiesIntegerSemantic("FontSize", widget->styles->fontsize);
+    logPropertiesStringSemantic("FontStyle", widget->styles->fontstyle);
+    logPropertiesStringSemantic("FontWeight", widget->styles->fontweight);
+    logPropertiesStringSemantic("BackgroundColor", widget->styles->backgroundcolor);
+    logPropertiesStringSemantic("Color", widget->styles->color);
+    logPropertiesIntegerSemantic("LetterSpacing", widget->styles->letterspacing);
+    logPropertiesStringSemantic("TextDecorationLine", widget->styles->textdecorationline);
+    logPropertiesStringSemantic("TextDecorationStyle", widget->styles->textdecorationstyle);
+    logPropertiesIntegerSemantic("MarginTop", widget->styles->margintop);
+    logPropertiesIntegerSemantic("MarginLeft", widget->styles->marginleft);
+    logPropertiesIntegerSemantic("MarginRight", widget->styles->marginright);
+    logPropertiesIntegerSemantic("MarginBottom", widget->styles->marginbottom);
+    logPropertiesIntegerSemantic("PaddingTop", widget->styles->paddingtop);
+    logPropertiesIntegerSemantic("PaddingLeft", widget->styles->paddingleft);
+    logPropertiesIntegerSemantic("PaddingRight", widget->styles->paddingright);
+    logPropertiesIntegerSemantic("PaddingBottom", widget->styles->paddingbottom);
+    logPropertiesIntegerSemantic("MinWidth", widget->styles->minwidth);
+    logPropertiesIntegerSemantic("MinHeight", widget->styles->minheight);
+    logPropertiesIntegerSemantic("BorderWidth", widget->styles->borderwidth);
+    logPropertiesIntegerSemantic("BorderRadius", widget->styles->borderradius);
+    logPropertiesStringSemantic("BorderStyle", widget->styles->borderstyle);
+    logPropertiesStringSemantic("BorderColor", widget->styles->bordercolor);
     switch (widget->widgetType)
     {
     case INTERFACE_TYPE:

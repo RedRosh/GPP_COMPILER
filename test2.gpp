@@ -1,13 +1,18 @@
 Interface interface: {
     Height : 400,
     Width  :500,
-    Title : "App"
+    Title : "App",
+    LetterSpacing : 1,
+    MarginLeft : 54
 };
 Label label: {
     Height : 40,
     Width  :20,
     Opacity : 100,
-    Text : "label here"
+    Text : "label here",   
+    FontStyle : "SANS",
+    LetterSpacing : 1,
+    MarginLeft : 54
 };
 
 Label label2: {
@@ -24,11 +29,20 @@ Button button: {
     Text : "Click Me"
 };
 
+InputField input: {
+    Height : 40,
+    Width  :20,
+    Opacity : 100,
+    PlaceHolder : "Enter your Email"
+};
+
+
 
 Begin
 Start interface "CENTER" ;
 Put label 10 0;
 Put label2 50 50;
 Put button 10 200;
+Put input 100 100;
 Show interface;
 End

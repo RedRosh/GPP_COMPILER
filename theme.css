@@ -1,0 +1,10 @@
+#interface {
+  background-color: #898989;
+  color: #156278;
+  font: 21px "Comic Sans";
+}
+#button {
+  border-radius: 12px;
+  border-color: black;
+  border-style: solid;
+}

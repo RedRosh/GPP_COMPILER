@@ -17,13 +17,8 @@ font-family : "Comic Sans" ;
 } 
 
 #button { 
-background-color : green ;
-color : white ;
 min-width : 150px ;
-border-width : 5px ;
-border-radius : 12px ;
-border-style : solid ;
-border-color : black ;
+border-style : dashed ;
 font-family : "Comic Sans" ;
 } 
 

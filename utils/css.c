@@ -7,7 +7,7 @@ static FILE *themeFile;
 void generateCssFile()
 {
 
-    if ((themeFile = fopen("theme.css", "w+")) == NULL)
+    if ((themeFile = fopen("./styles/theme.css", "w+")) == NULL)
     {
         logError("Could Not open the file");
         exit(1);

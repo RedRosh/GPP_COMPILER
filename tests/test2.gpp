@@ -22,7 +22,8 @@ Button button : {
     Height : 120,
     MinWidth : 150,
     Width : 50,
-    BorderStyle : "dashedddd"
+    Text : "Click Me",
+    BorderStyle : "dashed"
 };
 
 Begin

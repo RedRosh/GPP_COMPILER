@@ -10,7 +10,8 @@ Label label: {
     Width  :20,
     Opacity : 100,
     Text : "label here",   
-    FontStyle : "SANS",
+    FontStyle : "normal",
+    FontWeight : "bolder",
     LetterSpacing : 1,
     MarginLeft : 54
 };

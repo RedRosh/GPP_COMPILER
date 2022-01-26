@@ -119,8 +119,17 @@ void widget_set_property(int token_prop)
             logSemanticError("FontStyle property is a String ");
             exit(1);
         }
-        Widget->styles->fontstyle = malloc(strlen(Token->value) * sizeof(char));
-        strcpy(Widget->styles->fontstyle, Token->value);
+        if (!strcmp(Token->value, "normal") || !strcmp(Token->value, "oblique") || !strcmp(Token->value, "italic"))
+        {
+            Widget->styles->fontstyle = malloc(strlen(Token->value) * sizeof(char));
+            strcpy(Widget->styles->fontstyle, Token->value);
+        }
+        else
+        {
+            logSemanticError("FontStyle property supports \"normal\" OR \"oblique\" OR \"italic\" as attribute ");
+            exit(1);
+        }
+
         break;
     }
     case TOKEN_FONTWEIGHT:
@@ -130,8 +139,17 @@ void widget_set_property(int token_prop)
             logSemanticError("FontWeight property is a String ");
             exit(1);
         }
-        Widget->styles->fontweight = malloc(strlen(Token->value) * sizeof(char));
-        strcpy(Widget->styles->fontweight, Token->value);
+        if (!strcmp(Token->value, "normal") || !strcmp(Token->value, "bold") || !strcmp(Token->value, "bolder") || !strcmp(Token->value, "lighter"))
+        {
+            Widget->styles->fontweight = malloc(strlen(Token->value) * sizeof(char));
+            strcpy(Widget->styles->fontweight, Token->value);
+        }
+        else
+        {
+            logSemanticError("FontWeight property supports \"normal\" OR \"bold\" OR \"bolder\" OR \"lighter\" as attribute ");
+            exit(1);
+        }
+
         break;
     }
     case TOKEN_BACKGROUNDCOLOR:
@@ -173,8 +191,17 @@ void widget_set_property(int token_prop)
             logSemanticError("TextDecorationLine property is a String ");
             exit(1);
         }
-        Widget->styles->textdecorationline = malloc(strlen(Token->value) * sizeof(char));
-        strcpy(Widget->styles->textdecorationline, Token->value);
+        if (!strcmp(Token->value, "none") || !strcmp(Token->value, "underline") || !strcmp(Token->value, "line-through"))
+        {
+            Widget->styles->textdecorationline = malloc(strlen(Token->value) * sizeof(char));
+            strcpy(Widget->styles->textdecorationline, Token->value);
+        }
+        else
+        {
+            logSemanticError("TextDecorationLine property supports \"none\" OR \"underline\" OR \"line-through\" as attribute ");
+            exit(1);
+        }
+
         break;
     }
     case TOKEN_TEXTDECORATIONSTYLE:
@@ -184,8 +211,17 @@ void widget_set_property(int token_prop)
             logSemanticError("TextDecorationStyle property is a String ");
             exit(1);
         }
-        Widget->styles->textdecorationstyle = malloc(strlen(Token->value) * sizeof(char));
-        strcpy(Widget->styles->textdecorationstyle, Token->value);
+        if (!strcmp(Token->value, "solid") || !strcmp(Token->value, "double") || !strcmp(Token->value, "wavy"))
+        {
+            Widget->styles->textdecorationstyle = malloc(strlen(Token->value) * sizeof(char));
+            strcpy(Widget->styles->textdecorationstyle, Token->value);
+        }
+        else
+        {
+            logSemanticError("TextDecorationStyle property supports \"solid\" OR \"double\" OR \"wavy\" as attribute ");
+            exit(1);
+        }
+
         break;
     }
     case TOKEN_MARGINTOP:
@@ -305,8 +341,16 @@ void widget_set_property(int token_prop)
             logSemanticError("BorderStyle property is a String ");
             exit(1);
         }
-        Widget->styles->borderstyle = malloc(strlen(Token->value) * sizeof(char));
-        strcpy(Widget->styles->borderstyle, Token->value);
+        if (!strcmp(Token->value, "solid") || !strcmp(Token->value, "none") || !strcmp(Token->value, "dotted") || !strcmp(Token->value, "dashed"))
+        {
+            Widget->styles->borderstyle = malloc(strlen(Token->value) * sizeof(char));
+            strcpy(Widget->styles->borderstyle, Token->value);
+        }
+        else
+        {
+            logSemanticError("BorderStyle property supports \"solid\" OR \"none\" OR \"dotted\" OR \"dashed\" as attribute ");
+            exit(1);
+        }
         break;
     }
     case TOKEN_BORDERCOLOR:

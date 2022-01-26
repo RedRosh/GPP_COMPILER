@@ -1,49 +1,34 @@
 Interface interface: {
-    Height : 400,
+    Height : 500,
     Width  :500,
-    Title : "App",
-    LetterSpacing : 1,
-    MarginLeft : 54
+    Title : "App"
 };
-Label label: {
-    Height : 40,
-    Width  :20,
-    Opacity : 100,
-    Text : "label here",   
-    FontStyle : "normal",
-    FontWeight : "bolder",
-    LetterSpacing : 1,
-    MarginLeft : 54
+Label label : {
+    Height : 500,
+    Width  :500,
+    Text : "label here",
+    Color :"black",
+    Opacity : 100
 };
 
-Label label2: {
-    Height : 40,
-    Width  :20,
-    Opacity : 50,
-    Text : "label here too but with less opacity"
+Label label1 : {
+    Height : 500,
+    Width  :500,
+    Text : "label here with less opacity",
+    Opacity : 50
 };
 
-Button button: {
-    Height : 40,
-    Width  :20,
-    Opacity : 100,
-    Text : "Click Me"
+Button button : {
+    Height : 120,
+    MinWidth : 150,
+    Width : 50,
+    BorderStyle : "dashedddd"
 };
-
-InputField input: {
-    Height : 40,
-    Width  :20,
-    Opacity : 100,
-    PlaceHolder : "Enter your Email"
-};
-
-
 
 Begin
 Start interface "CENTER" ;
-Put label 10 0;
-Put label2 50 50;
-Put button 10 200;
-Put input 100 100;
+Put button 400 200;
+Put label 10 10;
+Put label1 100 50;
 Show interface;
 End

@@ -46,6 +46,9 @@ void check_operation();
 void set_position_params(int x, int y);
 void set_sleep_params(int sleep);
 OPERATION *getTheCurrentOperation();
+//* CSS
+void generateCssFile();
+
 //* COLORS
 void red();
 void yellow();

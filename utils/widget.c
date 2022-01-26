@@ -149,7 +149,6 @@ void widget_set_property(int token_prop)
             logSemanticError("FontWeight property supports \"normal\" OR \"bold\" OR \"bolder\" OR \"lighter\" as attribute ");
             exit(1);
         }
-
         break;
     }
     case TOKEN_BACKGROUNDCOLOR:
@@ -577,7 +576,7 @@ WIDGET *getTheCurrentWidget()
     new_widget->styles->paddingright = Widget->styles->paddingright;
     new_widget->styles->paddingbottom = Widget->styles->paddingbottom;
     new_widget->styles->minwidth = Widget->styles->minwidth;
-    new_widget->styles->minheight = Widget->styles->paddingbottom;
+    new_widget->styles->minheight = Widget->styles->minheight;
     new_widget->styles->borderradius = Widget->styles->borderradius;
     new_widget->styles->borderwidth = Widget->styles->borderwidth;
 

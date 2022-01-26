@@ -1,10 +1,29 @@
-#interface {
-  background-color: #898989;
-  color: #156278;
-  font: 21px "Comic Sans";
-}
-#button {
-  border-radius: 12px;
-  border-color: black;
-  border-style: solid;
-}
+GtkButton { 
+border-image : none ;
+background-image : none ;
+} 
+
+#interface { 
+font-family : "Comic Sans" ;
+} 
+
+#label { 
+color : black ;
+font-family : "Comic Sans" ;
+} 
+
+#label1 { 
+font-family : "Comic Sans" ;
+} 
+
+#button { 
+background-color : green ;
+color : white ;
+min-width : 150px ;
+border-width : 5px ;
+border-radius : 12px ;
+border-style : solid ;
+border-color : black ;
+font-family : "Comic Sans" ;
+} 
+

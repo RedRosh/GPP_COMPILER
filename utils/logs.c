@@ -166,12 +166,14 @@ void logCurrentToken()
         printf(" at Line  ");
         blue();
         printf("%d . \n ", Line);
+        reset();
         break;
     }
     case TOKEN_EOF:
     {
         green();
         printf("[ TOKEN ] : reaching the End Of the File \n");
+        reset();
         break;
     }
     default:
@@ -314,6 +316,7 @@ void logCurrentWidget(WIDGET *widget)
         break;
     }
     }
+    reset();
 }
 
 //* OPERATIONS LOGS
@@ -360,4 +363,5 @@ void logCurrentOperation(OPERATION *operation)
         logPropertiesStringSemantic("Info", "No Params for this operation");
     }
     }
+    reset();
 }

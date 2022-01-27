@@ -180,4 +180,3 @@ Here's the final result :star: :star: :star: :star: :star: :
 - [x] Styles
 - [ ] Testing the code :
 
-[Test Image](https://i.ibb.co/4Yy35NP/Screenshot-from-2022-01-26-19-48-09.png)

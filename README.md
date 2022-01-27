@@ -45,14 +45,21 @@ The syntaxe of a gpp file is pretty simple , it contains 4 types of widgets that
 The correct way to write the code is such as the following :
 
 
-```gtk plus plus
-WIDGET NAME : {
+```
+WIDGET WIDGET_NAME : {
     PROPERTY : VALUE [,]
     [PROPERTY : VALUE ]
-}; 
+};
+
+Begin
+Start INTERFACE_NAME INTERFACE_PROPERTY;
+Put WIDGET_NAME X Y ;
+[Put WIDGET_NAME X Y ;]
+Show INTERFACE_NAME;
+End
 ```
 * __WIDGET__ : one of the 4 previous types, written in PascalCase.
-* __NAME__ : your variable name which can contain __numbers and letters only__, and starting with a __letter__.
+* __WIDGET_NAME__ : your variable name which can contain __numbers and letters only__, and starting with a __letter__.
 * __PROPERTY__ : can be one of the following :
 
     * For any widget :
@@ -86,7 +93,20 @@ WIDGET NAME : {
         * __Xalign__ : is the horizontal text alignment, and has a __VALUE__ of a **positive Integer**.
         * __Yalign__ : is the vertical text alignment, and has a __VALUE__ of a **positive Integer**.
 
-#### _PS1 : If you want to add more properties, you need to end your line with a comma \( , \)_. 
+#### _PS1 : If you want to add more properties to a widget, you need to end your line with a comma \( , \)_. 
+
+* __INTERFACE_NAME__ : is the name of your predefined **Interface** variable.
+    
+    * __INERFACE_PROPERTY__ : is the property in which you want your interface to show up. It can be:
+        
+        * __"CENTER"__ : if you want your interface to appear in the center of your string.
+        
+        * __"MOUSE__ : if you want your interface to appear in the current position of your mouse.
+
+        _Note that "CENTER" and "MOUSE" are strings and not keywoards_.
+
+* __X__ : The x position of your widget, it has the value of an **Integer**.
+* __Y__ : The y position of your widget, it has the value of an **Integer**.
 
 #### _PS2 : all the keywords are written in PascalCase_.
 
@@ -95,6 +115,6 @@ WIDGET NAME : {
 - [x] Lexer
 - [x] Parser
 - [x] Testing the code
-- [ ] Semantic(ghda nchaellah ysali lprojet(inchallah)²)
-- [ ] Styles
-
+- [x] Semantic
+- [x] Styles
+- [ ] Testing the code

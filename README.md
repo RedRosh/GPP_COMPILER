@@ -8,7 +8,13 @@ To get projet on your computer, clone it using the following command :
 git clone https://github.com/RedRosh/GPP_COMPILER
 ```
 
-To test the compiler,on your terminal, do the following :
+Install gtk3 on your ubuntu machine: 
+
+```
+sudo apt-get install libgtk-3-dev
+```
+
+To test the compiler, on your terminal, do the following :
 
 1- _change directory_ :
 
@@ -68,7 +74,57 @@ End
 
         * __Width__ : is the width of the widget, and has a __VALUE__ of a __positive Integer__.
         
-        * __Opacity__ : : is the opacity of the widget, and has a __VALUE__ of a __positive Integer between 0 and 100__.
+        * __Opacity__ : is the opacity of the widget, and has a __VALUE__ of a __positive Integer between 0 and 100__.
+
+            The following properties are for styling purposes :
+        ### __FONT PROPERTIES__
+
+        * __FontSize__ : 
+        * __FontStyle__ : is the style of the font, and can take one of the following __VALUES__ : "normal", "oblique", "italic".
+        * __FontWeight__ : is the weight of the font, and can take one of the following **VALUES** : "normal", "bold", "bolder", "lighter", 100, 200, 300, 400, 500, 600, 700, 800, 900.
+
+        ### __COLOR PROPERTIES__
+        
+
+        * __BackgroundColor__ : A string that is the bachgroundcolor in hexadecimal. Ex : "#123456"
+        * __Color__ : A string that is the widget color in hexadecimal. Ex : "#123456"
+
+        ### __FONT PROPERTIES__
+
+
+        * __LetterSpacing__ : The lenght between letters, take an **Integer** value.
+        * __TextDecorationLine__ : Can be one of these **VALUES** : "none", "underline", "line-through".
+        * __TextDecorationStyle__ : Can be one of these **VALUES** : "solid", "double", "wavy".
+
+        ### __BOX PROPERTIES__
+
+
+        * __MarginTop__
+        * __MarginLeft__
+        * __MarginRight__
+        * __MarginBottom__
+        
+            The margin lenght in each side, takes an **Integer** value
+
+        * __PaddingTop__
+        * __PaddingLeft__
+        * __PaddingRight__
+        * __PaddingBottom__
+
+            The margin lenght in each side, takes an **Integer** value
+
+        * __MinWidth__ : The minimum value of the widget's width, takes an **Integer** value.
+        * __MinHeight__ : The minimum value of the widget's height, takes an **Integer** value.
+
+        ### __BORDER PROPERTIES__
+
+        
+        * __BorderWidth__ : The width of the border, takes an **Integer** value
+        * __BorderRadius__ : The width of the border, takes an **Integer** value.
+        * __BorderStyle__ : Can be one of these **VALUES** : "none", "solid", "inset", "outset", "hidden", "dotted", "dashed", "double", "groove", "ridge".
+        * __BorderColor__ : A string that is the widget's border color in hexadecimal. Ex : "#123456".
+
+        For more informations about styling props, [Click here](https://docs.gtk.org/gtk3/css-properties.html)
 
     * For the __Interface__ widget :
 

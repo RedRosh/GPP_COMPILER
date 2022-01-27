@@ -5,6 +5,29 @@
 void widget_init()
 {
     Widget = calloc(1, sizeof(WIDGET));
+    Widget->styles = (CSSSTYLES *)malloc(sizeof(CSSSTYLES));
+    Widget->styles->fontsize = -1;
+    Widget->styles->letterspacing = -1;
+    Widget->styles->margintop = -1;
+    Widget->styles->marginleft = -1;
+    Widget->styles->marginright = -1;
+    Widget->styles->marginbottom = -1;
+    Widget->styles->paddingtop = -1;
+    Widget->styles->paddingleft = -1;
+    Widget->styles->paddingright = -1;
+    Widget->styles->paddingbottom = -1;
+    Widget->styles->minwidth = -1;
+    Widget->styles->minheight = -1;
+    Widget->styles->borderradius = -1;
+    Widget->styles->borderwidth = -1;
+    Widget->styles->fontstyle = NULL;
+    Widget->styles->fontweight = NULL;
+    Widget->styles->backgroundcolor = NULL;
+    Widget->styles->color = NULL;
+    Widget->styles->textdecorationline = NULL;
+    Widget->styles->textdecorationstyle = NULL;
+    Widget->styles->borderstyle = NULL;
+    Widget->styles->bordercolor = NULL;
     Widget->height = -1;
     Widget->width = -1;
     Widget->opacity = -1;
@@ -79,6 +102,277 @@ void widget_set_property(int token_prop)
 {
     switch (token_prop)
     {
+    case TOKEN_FONTSIZE:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("FontSize property is an integer ");
+            exit(1);
+        }
+        Widget->styles->fontsize = atoi(Token->value);
+        break;
+    }
+    case TOKEN_FONTSTYLE:
+    {
+        if (Token->type != TOKEN_STRING)
+        {
+            logSemanticError("FontStyle property is a String ");
+            exit(1);
+        }
+        if (!strcmp(Token->value, "normal") || !strcmp(Token->value, "oblique") || !strcmp(Token->value, "italic"))
+        {
+            Widget->styles->fontstyle = malloc(strlen(Token->value) * sizeof(char));
+            strcpy(Widget->styles->fontstyle, Token->value);
+        }
+        else
+        {
+            logSemanticError("FontStyle property supports \"normal\" OR \"oblique\" OR \"italic\" as attribute ");
+            exit(1);
+        }
+
+        break;
+    }
+    case TOKEN_FONTWEIGHT:
+    {
+        if (Token->type != TOKEN_STRING)
+        {
+            logSemanticError("FontWeight property is a String ");
+            exit(1);
+        }
+        if (!strcmp(Token->value, "normal") || !strcmp(Token->value, "bold") || !strcmp(Token->value, "bolder") || !strcmp(Token->value, "lighter"))
+        {
+            Widget->styles->fontweight = malloc(strlen(Token->value) * sizeof(char));
+            strcpy(Widget->styles->fontweight, Token->value);
+        }
+        else
+        {
+            logSemanticError("FontWeight property supports \"normal\" OR \"bold\" OR \"bolder\" OR \"lighter\" as attribute ");
+            exit(1);
+        }
+        break;
+    }
+    case TOKEN_BACKGROUNDCOLOR:
+    {
+        if (Token->type != TOKEN_STRING)
+        {
+            logSemanticError("BackgroundColor property is a String ");
+            exit(1);
+        }
+        Widget->styles->backgroundcolor = malloc(strlen(Token->value) * sizeof(char));
+        strcpy(Widget->styles->backgroundcolor, Token->value);
+        break;
+    }
+    case TOKEN_COLOR:
+    {
+        if (Token->type != TOKEN_STRING)
+        {
+            logSemanticError("Color property is a String ");
+            exit(1);
+        }
+        Widget->styles->color = malloc(strlen(Token->value) * sizeof(char));
+        strcpy(Widget->styles->color, Token->value);
+        break;
+    }
+    case TOKEN_LETTERSPACING:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("LetterSpacing property is an integer ");
+            exit(1);
+        }
+        Widget->styles->letterspacing = atoi(Token->value);
+        break;
+    }
+    case TOKEN_TEXTDECORATIONLINE:
+    {
+        if (Token->type != TOKEN_STRING)
+        {
+            logSemanticError("TextDecorationLine property is a String ");
+            exit(1);
+        }
+        if (!strcmp(Token->value, "none") || !strcmp(Token->value, "underline") || !strcmp(Token->value, "line-through"))
+        {
+            Widget->styles->textdecorationline = malloc(strlen(Token->value) * sizeof(char));
+            strcpy(Widget->styles->textdecorationline, Token->value);
+        }
+        else
+        {
+            logSemanticError("TextDecorationLine property supports \"none\" OR \"underline\" OR \"line-through\" as attribute ");
+            exit(1);
+        }
+
+        break;
+    }
+    case TOKEN_TEXTDECORATIONSTYLE:
+    {
+        if (Token->type != TOKEN_STRING)
+        {
+            logSemanticError("TextDecorationStyle property is a String ");
+            exit(1);
+        }
+        if (!strcmp(Token->value, "solid") || !strcmp(Token->value, "double") || !strcmp(Token->value, "wavy"))
+        {
+            Widget->styles->textdecorationstyle = malloc(strlen(Token->value) * sizeof(char));
+            strcpy(Widget->styles->textdecorationstyle, Token->value);
+        }
+        else
+        {
+            logSemanticError("TextDecorationStyle property supports \"solid\" OR \"double\" OR \"wavy\" as attribute ");
+            exit(1);
+        }
+
+        break;
+    }
+    case TOKEN_MARGINTOP:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("MarginTop property is an integer ");
+            exit(1);
+        }
+        Widget->styles->margintop = atoi(Token->value);
+        break;
+    }
+    case TOKEN_MARGINLEFT:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("MarginLeft property is an integer ");
+            exit(1);
+        }
+        Widget->styles->marginleft = atoi(Token->value);
+        break;
+    }
+    case TOKEN_MARGINRIGHT:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("MarginRight property is an integer ");
+            exit(1);
+        }
+        Widget->styles->marginright = atoi(Token->value);
+        break;
+    }
+    case TOKEN_MARGINBOTTOM:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("MarginBottom property is an integer ");
+            exit(1);
+        }
+        Widget->styles->marginbottom = atoi(Token->value);
+        break;
+    }
+    case TOKEN_PADDINGTOP:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("PaddingTop property is an integer ");
+            exit(1);
+        }
+        Widget->styles->paddingtop = atoi(Token->value);
+        break;
+    }
+    case TOKEN_PADDINGLEFT:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("PaddingLeft property is an integer ");
+            exit(1);
+        }
+        Widget->styles->paddingleft = atoi(Token->value);
+        break;
+    }
+    case TOKEN_PADDINGRIGHT:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("PaddingRight property is an integer ");
+            exit(1);
+        }
+        Widget->styles->paddingright = atoi(Token->value);
+        break;
+    }
+    case TOKEN_MINWIDTH:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("MinWidth property is an integer ");
+            exit(1);
+        }
+        Widget->styles->minwidth = atoi(Token->value);
+        break;
+    }
+    case TOKEN_MINHEIGHT:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("MinHeight property is an integer ");
+            exit(1);
+        }
+        Widget->styles->minheight = atoi(Token->value);
+        break;
+    }
+    case TOKEN_BORDERWIDTH:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("BorderWidth property is an integer ");
+            exit(1);
+        }
+        Widget->styles->borderwidth = atoi(Token->value);
+        break;
+    }
+    case TOKEN_BORDERRADIUS:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("BorderRadius property is an integer ");
+            exit(1);
+        }
+        Widget->styles->borderradius = atoi(Token->value);
+        break;
+    }
+    case TOKEN_BORDERSTYLE:
+    {
+        if (Token->type != TOKEN_STRING)
+        {
+            logSemanticError("BorderStyle property is a String ");
+            exit(1);
+        }
+        if (!strcmp(Token->value, "solid") || !strcmp(Token->value, "none") || !strcmp(Token->value, "dotted") || !strcmp(Token->value, "dashed"))
+        {
+            Widget->styles->borderstyle = malloc(strlen(Token->value) * sizeof(char));
+            strcpy(Widget->styles->borderstyle, Token->value);
+        }
+        else
+        {
+            logSemanticError("BorderStyle property supports \"solid\" OR \"none\" OR \"dotted\" OR \"dashed\" as attribute ");
+            exit(1);
+        }
+        break;
+    }
+    case TOKEN_BORDERCOLOR:
+    {
+        if (Token->type != TOKEN_STRING)
+        {
+            logSemanticError("BorderColor property is a String ");
+            exit(1);
+        }
+        Widget->styles->bordercolor = malloc(strlen(Token->value) * sizeof(char));
+        strcpy(Widget->styles->bordercolor, Token->value);
+        break;
+    }
+    case TOKEN_PADDINGBOTTOM:
+    {
+        if (Token->type != TOKEN_INTLIT)
+        {
+            logSemanticError("PaddingBottom property is an integer ");
+            exit(1);
+        }
+        Widget->styles->paddingbottom = atoi(Token->value);
+        break;
+    }
     case TOKEN_WIDTH:
     {
         if (Token->type != TOKEN_INTLIT)
@@ -270,6 +564,97 @@ void widget_set_property(int token_prop)
 WIDGET *getTheCurrentWidget()
 {
     WIDGET *new_widget = (WIDGET *)malloc(sizeof(WIDGET));
+    new_widget->styles = (CSSSTYLES *)malloc(sizeof(CSSSTYLES));
+    new_widget->styles->fontsize = Widget->styles->fontsize;
+    new_widget->styles->letterspacing = Widget->styles->letterspacing;
+    new_widget->styles->margintop = Widget->styles->margintop;
+    new_widget->styles->marginleft = Widget->styles->marginleft;
+    new_widget->styles->marginright = Widget->styles->marginright;
+    new_widget->styles->marginbottom = Widget->styles->marginbottom;
+    new_widget->styles->paddingtop = Widget->styles->paddingtop;
+    new_widget->styles->paddingleft = Widget->styles->paddingleft;
+    new_widget->styles->paddingright = Widget->styles->paddingright;
+    new_widget->styles->paddingbottom = Widget->styles->paddingbottom;
+    new_widget->styles->minwidth = Widget->styles->minwidth;
+    new_widget->styles->minheight = Widget->styles->minheight;
+    new_widget->styles->borderradius = Widget->styles->borderradius;
+    new_widget->styles->borderwidth = Widget->styles->borderwidth;
+
+    if (Widget->styles->textdecorationline == NULL)
+    {
+        new_widget->styles->textdecorationline = NULL;
+    }
+    else
+    {
+        new_widget->styles->textdecorationline = malloc(strlen(Widget->styles->textdecorationline) * sizeof(char));
+        strcpy(new_widget->styles->textdecorationline, Widget->styles->textdecorationline);
+    }
+    if (Widget->styles->textdecorationstyle == NULL)
+    {
+        new_widget->styles->textdecorationstyle = NULL;
+    }
+    else
+    {
+        new_widget->styles->textdecorationstyle = malloc(strlen(Widget->styles->textdecorationstyle) * sizeof(char));
+        strcpy(new_widget->styles->textdecorationstyle, Widget->styles->textdecorationstyle);
+    }
+    if (Widget->styles->borderstyle == NULL)
+    {
+        new_widget->styles->borderstyle = NULL;
+    }
+    else
+    {
+        new_widget->styles->borderstyle = malloc(strlen(Widget->styles->borderstyle) * sizeof(char));
+        strcpy(new_widget->styles->borderstyle, Widget->styles->borderstyle);
+    }
+
+    if (Widget->styles->bordercolor == NULL)
+    {
+        new_widget->styles->bordercolor = NULL;
+    }
+    else
+    {
+        new_widget->styles->bordercolor = malloc(strlen(Widget->styles->bordercolor) * sizeof(char));
+        strcpy(new_widget->styles->bordercolor, Widget->styles->bordercolor);
+    }
+
+    if (Widget->styles->fontstyle == NULL)
+    {
+        new_widget->styles->fontstyle = NULL;
+    }
+    else
+    {
+        new_widget->styles->fontstyle = malloc(strlen(Widget->styles->fontstyle) * sizeof(char));
+        strcpy(new_widget->styles->fontstyle, Widget->styles->fontstyle);
+    }
+
+    if (Widget->styles->fontweight == NULL)
+    {
+        new_widget->styles->fontweight = NULL;
+    }
+    else
+    {
+        new_widget->styles->fontweight = malloc(strlen(Widget->styles->fontweight) * sizeof(char));
+        strcpy(new_widget->styles->fontweight, Widget->styles->fontweight);
+    }
+    if (Widget->styles->backgroundcolor == NULL)
+    {
+        new_widget->styles->backgroundcolor = NULL;
+    }
+    else
+    {
+        new_widget->styles->backgroundcolor = malloc(strlen(Widget->styles->backgroundcolor) * sizeof(char));
+        strcpy(new_widget->styles->backgroundcolor, Widget->styles->backgroundcolor);
+    }
+    if (Widget->styles->color == NULL)
+    {
+        new_widget->styles->color = NULL;
+    }
+    else
+    {
+        new_widget->styles->color = malloc(strlen(Widget->styles->color) * sizeof(char));
+        strcpy(new_widget->styles->color, Widget->styles->color);
+    }
     new_widget->widgetType = Widget->widgetType;
     new_widget->height = Widget->height;
     new_widget->width = Widget->width;

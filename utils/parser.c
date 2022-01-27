@@ -42,12 +42,13 @@ void Program()
     Widgets();
     getAllWidgets();
     convert_widget_to_gtk_widget();
+    generateCssFile();
     parser_eat(TOKEN_BEGIN);
     Operations();
     getAllOperations();
     parser_eat(TOKEN_END);
-    executeQuery();
     logSuccessParser("the file is well written");
+    executeQuery();
 }
 
 void Widgets()
@@ -109,6 +110,27 @@ void prop()
     case TOKEN_ID:
     case TOKEN_TEXT:
     case TOKEN_TEXTALIGN:
+    case TOKEN_FONTSIZE:
+    case TOKEN_FONTSTYLE:
+    case TOKEN_FONTWEIGHT:
+    case TOKEN_BACKGROUNDCOLOR:
+    case TOKEN_LETTERSPACING:
+    case TOKEN_TEXTDECORATIONLINE:
+    case TOKEN_TEXTDECORATIONSTYLE:
+    case TOKEN_MARGINTOP:
+    case TOKEN_MARGINLEFT:
+    case TOKEN_MARGINRIGHT:
+    case TOKEN_MARGINBOTTOM:
+    case TOKEN_PADDINGTOP:
+    case TOKEN_PADDINGLEFT:
+    case TOKEN_PADDINGRIGHT:
+    case TOKEN_PADDINGBOTTOM:
+    case TOKEN_MINWIDTH:
+    case TOKEN_MINHEIGHT:
+    case TOKEN_BORDERWIDTH:
+    case TOKEN_BORDERRADIUS:
+    case TOKEN_BORDERSTYLE:
+    case TOKEN_BORDERCOLOR:
     case TOKEN_BACKGROUND:
     case TOKEN_BORDER:
     case TOKEN_COLOR:

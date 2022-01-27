@@ -1,0 +1,35 @@
+Interface interface: {
+    Height : 500,
+    Width  :500,
+    Title : "App"
+};
+Label label : {
+    Height : 500,
+    Width  :500,
+    Text : "label here",
+    Color :"black",
+    Opacity : 100
+};
+
+Label label1 : {
+    Height : 500,
+    Width  :500,
+    Text : "label here with less opacity",
+    Opacity : 50
+};
+
+Button button : {
+    Height : 120,
+    MinWidth : 150,
+    Width : 50,
+    Text : "Click Me",
+    BorderStyle : "dashed"
+};
+
+Begin
+Start interface "CENTER" ;
+Put button 400 200;
+Put label 10 10;
+Put label1 100 50;
+Show interface;
+End

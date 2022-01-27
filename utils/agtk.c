@@ -53,6 +53,11 @@ void executePutOperation(OPERATION *operation)
 }
 void executeShowOperation(OPERATION *operation)
 {
+    GtkCssProvider *cssProvider = gtk_css_provider_new();
+    gtk_css_provider_load_from_path(cssProvider, "./styles/theme.css", NULL);
+    gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+                                              GTK_STYLE_PROVIDER(cssProvider),
+                                              GTK_STYLE_PROVIDER_PRIORITY_USER);
     gtk_widget_show_all(getGtkWidgetById(operation->id_widget));
 }
 void executeStartOperation(OPERATION *operation)
@@ -69,7 +74,6 @@ void executeStartOperation(OPERATION *operation)
 
 void convert_widget_to_gtk_widget()
 {
-
     WIDGETNODE *last = linkedWidgetList;
     if (linkedWidgetList == NULL)
     {
@@ -114,6 +118,8 @@ GtkWidget *create_gtk_widget(WIDGET *widget)
     {
         gtk_widget = gtk_window_new(GTK_WINDOW_TOPLEVEL);
         set_widget_title(gtk_widget, widget);
+        g_signal_connect(gtk_widget, "destroy",
+                         G_CALLBACK(gtk_main_quit), NULL);
         break;
     }
     case LABEL_TYPE:

@@ -18,10 +18,5 @@ void main(int argc, char *argv[])
     }
     gtk_init(&argc, &argv);
     init();
-    // do
-    // {
-    //     lexer_get_next_token();
-    //     logCurrentToken();
-    // } while (Token->type != TOKEN_EOF);
     parser_parse();
 }

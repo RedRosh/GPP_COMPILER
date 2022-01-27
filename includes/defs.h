@@ -46,6 +46,27 @@ typedef struct
         TOKEN_YALIGN,
         TOKEN_PLACEHOLDER,
         TOKEN_MAXLENGTH,
+        TOKEN_FONTSIZE,
+        TOKEN_FONTSTYLE,
+        TOKEN_FONTWEIGHT,
+        TOKEN_BACKGROUNDCOLOR,
+        TOKEN_LETTERSPACING,
+        TOKEN_TEXTDECORATIONLINE,
+        TOKEN_TEXTDECORATIONSTYLE,
+        TOKEN_MARGINTOP,
+        TOKEN_MARGINLEFT,
+        TOKEN_MARGINRIGHT,
+        TOKEN_MARGINBOTTOM,
+        TOKEN_PADDINGTOP,
+        TOKEN_PADDINGLEFT,
+        TOKEN_PADDINGRIGHT,
+        TOKEN_PADDINGBOTTOM,
+        TOKEN_MINWIDTH,
+        TOKEN_MINHEIGHT,
+        TOKEN_BORDERWIDTH,
+        TOKEN_BORDERRADIUS,
+        TOKEN_BORDERSTYLE,
+        TOKEN_BORDERCOLOR,
         TOKEN_BEGIN,
         TOKEN_END,
         TOKEN_START,
@@ -94,6 +115,31 @@ typedef struct
     char *placeholder;
     char *text;
 } INPUTFIELD;
+typedef struct CSSSTYLES
+{
+    int fontsize;
+    char *fontstyle;
+    char *fontweight;
+    char *backgroundcolor;
+    char *color;
+    int letterspacing;
+    char *textdecorationline;
+    char *textdecorationstyle;
+    int margintop;
+    int marginleft;
+    int marginright;
+    int marginbottom;
+    int paddingtop;
+    int paddingleft;
+    int paddingright;
+    int paddingbottom;
+    int minwidth;
+    int minheight;
+    int borderwidth;
+    int borderradius;
+    char *borderstyle;
+    char *bordercolor;
+} CSSSTYLES;
 
 typedef struct WIDGET
 {
@@ -102,6 +148,7 @@ typedef struct WIDGET
     int width;
     char *id;
     int opacity;
+    CSSSTYLES *styles;
     union TYPE
     {
         INPUTFIELD *inputField;

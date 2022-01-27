@@ -79,9 +79,9 @@ End
             The following properties are for styling purposes :
         ### __FONT PROPERTIES__
 
-        * __FontSize__ : 
+        * __FontSize__ : is the size of the font, and has an **Integer** value.
         * __FontStyle__ : is the style of the font, and can take one of the following __VALUES__ : "normal", "oblique", "italic".
-        * __FontWeight__ : is the weight of the font, and can take one of the following **VALUES** : "normal", "bold", "bolder", "lighter", 100, 200, 300, 400, 500, 600, 700, 800, 900.
+        * __FontWeight__ : is the weight of the font, and can take one of the following **VALUES** : "normal", "bold", "bolder", "lighter".
 
         ### __COLOR PROPERTIES__
         
@@ -121,7 +121,7 @@ End
         
         * __BorderWidth__ : The width of the border, takes an **Integer** value
         * __BorderRadius__ : The width of the border, takes an **Integer** value.
-        * __BorderStyle__ : Can be one of these **VALUES** : "none", "solid", "inset", "outset", "hidden", "dotted", "dashed", "double", "groove", "ridge".
+        * __BorderStyle__ : Can be one of these **VALUES** : "none", "solid", "dotted", "dashed".
         * __BorderColor__ : A string that is the widget's border color in hexadecimal. Ex : "#123456".
 
         For more informations about styling props, [Click here](https://docs.gtk.org/gtk3/css-properties.html)

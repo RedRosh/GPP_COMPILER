@@ -153,7 +153,7 @@ End
 
 * __INTERFACE_NAME__ : is the name of your predefined **Interface** variable.
     
-    * __INERFACE_PROPERTY__ : is the property in which you want your interface to show up. It can be:
+    * __INTERFACE_PROPERTY__ : is the property in which you want your interface to show up. It can be:
         
         * __"CENTER"__ : if you want your interface to appear in the center of your string.
         

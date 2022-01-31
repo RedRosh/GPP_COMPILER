@@ -5,7 +5,7 @@
 void widget_init()
 {
     Widget = calloc(1, sizeof(WIDGET));
-    Widget->styles = (CSSSTYLES *)malloc(sizeof(CSSSTYLES));
+    Widget->styles = (CSSSTYLES *)calloc(1, sizeof(CSSSTYLES));
     Widget->styles->fontsize = -1;
     Widget->styles->letterspacing = -1;
     Widget->styles->margintop = -1;
@@ -88,7 +88,7 @@ void widget_set_id(char *token_id)
 
     if (!idExists(token_id))
     {
-        Widget->id = malloc(strlen(token_id) * sizeof(char));
+        Widget->id = calloc(strlen(token_id) + 1, sizeof(char));
         strcpy(Widget->id, token_id);
     }
     else
@@ -121,7 +121,7 @@ void widget_set_property(int token_prop)
         }
         if (!strcmp(Token->value, "normal") || !strcmp(Token->value, "oblique") || !strcmp(Token->value, "italic"))
         {
-            Widget->styles->fontstyle = malloc(strlen(Token->value) * sizeof(char));
+            Widget->styles->fontstyle = calloc(strlen(Token->value) + 1, sizeof(char));
             strcpy(Widget->styles->fontstyle, Token->value);
         }
         else
@@ -141,7 +141,7 @@ void widget_set_property(int token_prop)
         }
         if (!strcmp(Token->value, "normal") || !strcmp(Token->value, "bold") || !strcmp(Token->value, "bolder") || !strcmp(Token->value, "lighter"))
         {
-            Widget->styles->fontweight = malloc(strlen(Token->value) * sizeof(char));
+            Widget->styles->fontweight = calloc(strlen(Token->value) + 1, sizeof(char));
             strcpy(Widget->styles->fontweight, Token->value);
         }
         else
@@ -158,7 +158,7 @@ void widget_set_property(int token_prop)
             logSemanticError("BackgroundColor property is a String ");
             exit(1);
         }
-        Widget->styles->backgroundcolor = malloc(strlen(Token->value) * sizeof(char));
+        Widget->styles->backgroundcolor = calloc(strlen(Token->value) + 1, sizeof(char));
         strcpy(Widget->styles->backgroundcolor, Token->value);
         break;
     }
@@ -169,7 +169,7 @@ void widget_set_property(int token_prop)
             logSemanticError("Color property is a String ");
             exit(1);
         }
-        Widget->styles->color = malloc(strlen(Token->value) * sizeof(char));
+        Widget->styles->color = calloc(strlen(Token->value) + 1, sizeof(char));
         strcpy(Widget->styles->color, Token->value);
         break;
     }
@@ -192,7 +192,7 @@ void widget_set_property(int token_prop)
         }
         if (!strcmp(Token->value, "none") || !strcmp(Token->value, "underline") || !strcmp(Token->value, "line-through"))
         {
-            Widget->styles->textdecorationline = malloc(strlen(Token->value) * sizeof(char));
+            Widget->styles->textdecorationline = calloc(strlen(Token->value) + 1, sizeof(char));
             strcpy(Widget->styles->textdecorationline, Token->value);
         }
         else
@@ -212,7 +212,7 @@ void widget_set_property(int token_prop)
         }
         if (!strcmp(Token->value, "solid") || !strcmp(Token->value, "double") || !strcmp(Token->value, "wavy"))
         {
-            Widget->styles->textdecorationstyle = malloc(strlen(Token->value) * sizeof(char));
+            Widget->styles->textdecorationstyle = calloc(strlen(Token->value) + 1, sizeof(char));
             strcpy(Widget->styles->textdecorationstyle, Token->value);
         }
         else
@@ -342,7 +342,7 @@ void widget_set_property(int token_prop)
         }
         if (!strcmp(Token->value, "solid") || !strcmp(Token->value, "none") || !strcmp(Token->value, "dotted") || !strcmp(Token->value, "dashed"))
         {
-            Widget->styles->borderstyle = malloc(strlen(Token->value) * sizeof(char));
+            Widget->styles->borderstyle = calloc(strlen(Token->value) + 1, sizeof(char));
             strcpy(Widget->styles->borderstyle, Token->value);
         }
         else
@@ -359,7 +359,7 @@ void widget_set_property(int token_prop)
             logSemanticError("BorderColor property is a String ");
             exit(1);
         }
-        Widget->styles->bordercolor = malloc(strlen(Token->value) * sizeof(char));
+        Widget->styles->bordercolor = calloc(strlen(Token->value) + 1, sizeof(char));
         strcpy(Widget->styles->bordercolor, Token->value);
         break;
     }
@@ -424,7 +424,7 @@ void widget_set_property(int token_prop)
                     logSemanticError("Title property is a String ");
                     exit(1);
                 }
-                Widget->type.interface->title = malloc(strlen(Token->value) * sizeof(char));
+                Widget->type.interface->title = calloc(strlen(Token->value) + 1, sizeof(char));
                 strcpy(Widget->type.interface->title, Token->value);
                 break;
             }
@@ -447,7 +447,7 @@ void widget_set_property(int token_prop)
                     logSemanticError("Text property is a String ");
                     exit(1);
                 }
-                Widget->type.label->text = malloc(strlen(Token->value) * sizeof(char));
+                Widget->type.label->text = calloc(strlen(Token->value) + 1, sizeof(char));
                 strcpy(Widget->type.label->text, Token->value);
                 break;
             }
@@ -500,7 +500,7 @@ void widget_set_property(int token_prop)
                     logSemanticError("Text property is a String ");
                     exit(1);
                 }
-                Widget->type.button->text = malloc(strlen(Token->value) * sizeof(char));
+                Widget->type.button->text = calloc(strlen(Token->value) + 1, sizeof(char));
                 strcpy(Widget->type.button->text, Token->value);
                 break;
             }
@@ -523,7 +523,7 @@ void widget_set_property(int token_prop)
                     logSemanticError("Text property is a String ");
                     exit(1);
                 }
-                Widget->type.inputField->text = malloc(strlen(Token->value) * sizeof(char));
+                Widget->type.inputField->text = calloc(strlen(Token->value) + 1, sizeof(char));
                 strcpy(Widget->type.inputField->text, Token->value);
                 break;
             }
@@ -544,7 +544,7 @@ void widget_set_property(int token_prop)
                     logSemanticError("PlaceHolder property is a String ");
                     exit(1);
                 }
-                Widget->type.inputField->placeholder = malloc(strlen(Token->value) * sizeof(char));
+                Widget->type.inputField->placeholder = calloc(strlen(Token->value) + 1, sizeof(char));
                 strcpy(Widget->type.inputField->placeholder, Token->value);
                 break;
             }
@@ -563,8 +563,8 @@ void widget_set_property(int token_prop)
 
 WIDGET *getTheCurrentWidget()
 {
-    WIDGET *new_widget = (WIDGET *)malloc(sizeof(WIDGET));
-    new_widget->styles = (CSSSTYLES *)malloc(sizeof(CSSSTYLES));
+    WIDGET *new_widget = (WIDGET *)calloc(1, sizeof(WIDGET));
+    new_widget->styles = (CSSSTYLES *)calloc(1, sizeof(CSSSTYLES));
     new_widget->styles->fontsize = Widget->styles->fontsize;
     new_widget->styles->letterspacing = Widget->styles->letterspacing;
     new_widget->styles->margintop = Widget->styles->margintop;
@@ -586,7 +586,7 @@ WIDGET *getTheCurrentWidget()
     }
     else
     {
-        new_widget->styles->textdecorationline = malloc(strlen(Widget->styles->textdecorationline) * sizeof(char));
+        new_widget->styles->textdecorationline = calloc(strlen(Widget->styles->textdecorationline) + 1, sizeof(char));
         strcpy(new_widget->styles->textdecorationline, Widget->styles->textdecorationline);
     }
     if (Widget->styles->textdecorationstyle == NULL)
@@ -595,7 +595,7 @@ WIDGET *getTheCurrentWidget()
     }
     else
     {
-        new_widget->styles->textdecorationstyle = malloc(strlen(Widget->styles->textdecorationstyle) * sizeof(char));
+        new_widget->styles->textdecorationstyle = calloc(strlen(Widget->styles->textdecorationstyle) + 1, sizeof(char));
         strcpy(new_widget->styles->textdecorationstyle, Widget->styles->textdecorationstyle);
     }
     if (Widget->styles->borderstyle == NULL)
@@ -604,7 +604,7 @@ WIDGET *getTheCurrentWidget()
     }
     else
     {
-        new_widget->styles->borderstyle = malloc(strlen(Widget->styles->borderstyle) * sizeof(char));
+        new_widget->styles->borderstyle = calloc(strlen(Widget->styles->borderstyle), sizeof(char));
         strcpy(new_widget->styles->borderstyle, Widget->styles->borderstyle);
     }
 
@@ -614,7 +614,7 @@ WIDGET *getTheCurrentWidget()
     }
     else
     {
-        new_widget->styles->bordercolor = malloc(strlen(Widget->styles->bordercolor) * sizeof(char));
+        new_widget->styles->bordercolor = calloc(strlen(Widget->styles->bordercolor), sizeof(char));
         strcpy(new_widget->styles->bordercolor, Widget->styles->bordercolor);
     }
 
@@ -624,7 +624,7 @@ WIDGET *getTheCurrentWidget()
     }
     else
     {
-        new_widget->styles->fontstyle = malloc(strlen(Widget->styles->fontstyle) * sizeof(char));
+        new_widget->styles->fontstyle = calloc(strlen(Widget->styles->fontstyle) + 1, sizeof(char));
         strcpy(new_widget->styles->fontstyle, Widget->styles->fontstyle);
     }
 
@@ -634,7 +634,7 @@ WIDGET *getTheCurrentWidget()
     }
     else
     {
-        new_widget->styles->fontweight = malloc(strlen(Widget->styles->fontweight) * sizeof(char));
+        new_widget->styles->fontweight = calloc(strlen(Widget->styles->fontweight) + 1, sizeof(char));
         strcpy(new_widget->styles->fontweight, Widget->styles->fontweight);
     }
     if (Widget->styles->backgroundcolor == NULL)
@@ -643,7 +643,7 @@ WIDGET *getTheCurrentWidget()
     }
     else
     {
-        new_widget->styles->backgroundcolor = malloc(strlen(Widget->styles->backgroundcolor) * sizeof(char));
+        new_widget->styles->backgroundcolor = calloc(strlen(Widget->styles->backgroundcolor) + 1, sizeof(char));
         strcpy(new_widget->styles->backgroundcolor, Widget->styles->backgroundcolor);
     }
     if (Widget->styles->color == NULL)
@@ -652,55 +652,55 @@ WIDGET *getTheCurrentWidget()
     }
     else
     {
-        new_widget->styles->color = malloc(strlen(Widget->styles->color) * sizeof(char));
+        new_widget->styles->color = calloc(strlen(Widget->styles->color) + 1, sizeof(char));
         strcpy(new_widget->styles->color, Widget->styles->color);
     }
     new_widget->widgetType = Widget->widgetType;
     new_widget->height = Widget->height;
     new_widget->width = Widget->width;
     new_widget->opacity = Widget->opacity;
-    new_widget->id = malloc(strlen(Widget->id) * sizeof(char));
+    new_widget->id = calloc(strlen(Widget->id) + 1, sizeof(char));
     strcpy(new_widget->id, Widget->id);
     switch (Widget->widgetType)
     {
     case INTERFACE_TYPE:
     {
-        new_widget->type.interface = (INTERFACE *)malloc(sizeof(INTERFACE));
+        new_widget->type.interface = (INTERFACE *)calloc(1, sizeof(INTERFACE));
         if (Widget->type.interface->title == NULL)
         {
             new_widget->type.interface->title = NULL;
         }
         else
         {
-            new_widget->type.interface->title = malloc(strlen(Widget->type.interface->title) * sizeof(char));
+            new_widget->type.interface->title = calloc(strlen(Widget->type.interface->title) + 1, sizeof(char));
             strcpy(new_widget->type.interface->title, Widget->type.interface->title);
         }
         break;
     }
     case BUTTON_TYPE:
     {
-        new_widget->type.button = (BUTTON *)malloc(sizeof(BUTTON));
+        new_widget->type.button = (BUTTON *)calloc(1, sizeof(BUTTON));
         if (Widget->type.button->text == NULL)
         {
             new_widget->type.button->text = NULL;
         }
         else
         {
-            new_widget->type.button->text = malloc(strlen(Widget->type.button->text) * sizeof(char));
+            new_widget->type.button->text = calloc(strlen(Widget->type.button->text) + 1, sizeof(char));
             strcpy(new_widget->type.button->text, Widget->type.button->text);
         }
         break;
     }
     case LABEL_TYPE:
     {
-        new_widget->type.label = (LABEL *)malloc(sizeof(LABEL));
+        new_widget->type.label = (LABEL *)calloc(1, sizeof(LABEL));
         if (Widget->type.label->text == NULL)
         {
             new_widget->type.label->text = NULL;
         }
         else
         {
-            new_widget->type.label->text = malloc(strlen(Widget->type.label->text) * sizeof(char));
+            new_widget->type.label->text = calloc(1 + strlen(Widget->type.label->text), sizeof(char));
             strcpy(new_widget->type.label->text, Widget->type.label->text);
         }
         new_widget->type.label->xalign = Widget->type.label->xalign;
@@ -710,14 +710,14 @@ WIDGET *getTheCurrentWidget()
     }
     case INPUTFIELD_TYPE:
     {
-        new_widget->type.inputField = (INPUTFIELD *)malloc(sizeof(INPUTFIELD));
+        new_widget->type.inputField = (INPUTFIELD *)calloc(1, sizeof(INPUTFIELD));
         if (Widget->type.inputField->text == NULL)
         {
             new_widget->type.inputField->text = NULL;
         }
         else
         {
-            new_widget->type.inputField->text = malloc(strlen(Widget->type.inputField->text) * sizeof(char));
+            new_widget->type.inputField->text = calloc(strlen(Widget->type.inputField->text) + 1, sizeof(char));
             strcpy(new_widget->type.inputField->text, Widget->type.inputField->text);
         }
         if (Widget->type.inputField->placeholder == NULL)
@@ -726,7 +726,7 @@ WIDGET *getTheCurrentWidget()
         }
         else
         {
-            new_widget->type.inputField->placeholder = malloc(strlen(Widget->type.inputField->placeholder) * sizeof(char));
+            new_widget->type.inputField->placeholder = calloc(strlen(Widget->type.inputField->placeholder) + 1, sizeof(char));
             strcpy(new_widget->type.inputField->placeholder, Widget->type.inputField->placeholder);
         }
         new_widget->type.inputField->maxlength = Widget->type.inputField->maxlength;

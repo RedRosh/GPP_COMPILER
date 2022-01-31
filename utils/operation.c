@@ -55,7 +55,7 @@ void set_operation_id(char *widget_id)
             }
         }
         }
-        Opera->id_widget = malloc(strlen(widget_id) * sizeof(char));
+        Opera->id_widget = calloc(strlen(widget_id) + 1, sizeof(char));
         strcpy(Opera->id_widget, widget_id);
     }
     else
@@ -73,7 +73,7 @@ void set_query_params(char *query)
     {
         if (!strcmp(query, "CENTER") || !strcmp(query, "MOUSE"))
         {
-            Opera->params.query = malloc(strlen(query) * sizeof(char));
+            Opera->params.query = calloc(strlen(query) + 1, sizeof(char));
             strcpy(Opera->params.query, query);
             break;
         }
@@ -112,7 +112,7 @@ void set_position_params(int x, int y)
     {
     case PUT_TYPE:
     {
-        Opera->params.position = (POSITION *)malloc(sizeof(POSITION));
+        Opera->params.position = (POSITION *)calloc(1, sizeof(POSITION));
         Opera->params.position->x = x;
         Opera->params.position->y = y;
         break;
@@ -144,23 +144,23 @@ void check_operation()
 
 OPERATION *getTheCurrentOperation()
 {
-    OPERATION *new_operation = (OPERATION *)malloc(sizeof(OPERATION));
+    OPERATION *new_operation = (OPERATION *)calloc(1, sizeof(OPERATION));
     new_operation->OperationType = Opera->OperationType;
     switch (new_operation->OperationType)
     {
     case START_TYPE:
     {
-        new_operation->id_widget = malloc(strlen(Opera->id_widget) * sizeof(char));
+        new_operation->id_widget = calloc(strlen(Opera->id_widget) + 1, sizeof(char));
         strcpy(new_operation->id_widget, Opera->id_widget);
-        new_operation->params.query = malloc(strlen(Opera->params.query) * sizeof(char));
+        new_operation->params.query = calloc(strlen(Opera->params.query) + 1, sizeof(char));
         strcpy(new_operation->params.query, Opera->params.query);
         break;
     }
     case PUT_TYPE:
     {
-        new_operation->id_widget = malloc(strlen(Opera->id_widget) * sizeof(char));
+        new_operation->id_widget = calloc(strlen(Opera->id_widget) + 1, sizeof(char));
         strcpy(new_operation->id_widget, Opera->id_widget);
-        new_operation->params.position = (POSITION *)malloc(sizeof(POSITION));
+        new_operation->params.position = (POSITION *)calloc(1, sizeof(POSITION));
         new_operation->params.position->x = Opera->params.position->x;
         new_operation->params.position->y = Opera->params.position->y;
         break;
@@ -173,7 +173,7 @@ OPERATION *getTheCurrentOperation()
     case DESTROY_TYPE:
     case SHOW_TYPE:
     {
-        new_operation->id_widget = malloc(strlen(Opera->id_widget) * sizeof(char));
+        new_operation->id_widget = calloc(strlen(Opera->id_widget) + 1, sizeof(char));
         strcpy(new_operation->id_widget, Opera->id_widget);
         break;
     }

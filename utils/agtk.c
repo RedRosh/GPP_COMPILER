@@ -90,10 +90,10 @@ void convert_widget_to_gtk_widget()
 
 void addGtkWidgetToList(WIDGET *widget)
 {
-    GTKWIDGETNODE *new_node_gtk_widget = (GTKWIDGETNODE *)malloc(sizeof(struct GTKWIDGETNODE));
+    GTKWIDGETNODE *new_node_gtk_widget = (GTKWIDGETNODE *)calloc(1, sizeof(struct GTKWIDGETNODE));
     GTKWIDGETNODE *last = linkedGtkWidgetList;
     new_node_gtk_widget->widgetType = widget->widgetType;
-    new_node_gtk_widget->id = malloc(strlen(widget->id) * sizeof(char));
+    new_node_gtk_widget->id = calloc(strlen(widget->id), sizeof(char));
     strcpy(new_node_gtk_widget->id, widget->id);
     new_node_gtk_widget->gtk_widget = create_gtk_widget(widget);
     new_node_gtk_widget->next = NULL;
@@ -153,7 +153,7 @@ GtkWidget *create_gtk_widget(WIDGET *widget)
 }
 void add_fixed_container_from_interface_to_List()
 {
-    GTKWIDGETNODE *new_node_gtk_widget = (GTKWIDGETNODE *)malloc(sizeof(struct GTKWIDGETNODE));
+    GTKWIDGETNODE *new_node_gtk_widget = (GTKWIDGETNODE *)calloc(1, sizeof(struct GTKWIDGETNODE));
     GTKWIDGETNODE *last = linkedGtkWidgetList;
     new_node_gtk_widget->widgetType = INTERFACE_TYPE;
     new_node_gtk_widget->id = "__FIXED";

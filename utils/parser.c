@@ -13,7 +13,7 @@ void parser_parse()
 void update_token()
 {
     tempToken->type = Token->type;
-    tempToken->value = malloc(strlen(Token->value) * sizeof(char));
+    tempToken->value = calloc(strlen(Token->value) + 1, sizeof(char));
     strcpy(tempToken->value, Token->value);
 }
 

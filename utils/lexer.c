@@ -180,11 +180,19 @@ int lexer_get_int()
 char *lexer_get_number_as_string(int number)
 {
 	int length = snprintf(NULL, 0, "%d", number);
-	char *str = malloc(length + 1);
+	char *str = calloc(length + 1, sizeof(char));
 	snprintf(str, length + 1, "%d", number);
 	return str;
 }
+void lexer_get_skip_comment()
+{
+	lexer_get_next_caracter();
 
+	while (lexer->c != '\n')
+	{
+		lexer_get_next_caracter();
+	}
+}
 char *lexer_get_string()
 {
 	lexer_get_next_caracter();
@@ -257,6 +265,12 @@ void lexer_get_next_token()
 				return;
 			}
 			Token = token_init(TOKEN_STRING, string);
+			return;
+		}
+		if (lexer->c == '#')
+		{
+			lexer_get_skip_comment();
+			lexer_get_next_token();
 			return;
 		}
 		if (isdigit(lexer->c))

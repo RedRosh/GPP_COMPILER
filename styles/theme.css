@@ -4,21 +4,48 @@ background-image : none ;
 } 
 
 #interface { 
+background-color : #aaa5d9 ;
 font-family : "Comic Sans" ;
 } 
 
-#label { 
+#usernameLabel { 
 color : black ;
 font-family : "Comic Sans" ;
 } 
 
-#label1 { 
+#passwordLabel { 
+color : black ;
+font-family : "Comic Sans" ;
+} 
+
+#usernameInput { 
+color : black ;
+font-family : "Comic Sans" ;
+} 
+
+#passwordInput { 
+color : black ;
 font-family : "Comic Sans" ;
 } 
 
 #button { 
-min-width : 150px ;
+font-weight : bold ;
+min-width : 50px ;
 border-style : dashed ;
+font-family : "Comic Sans" ;
+} 
+
+#thankyou { 
+font-size : 18px ;
+color : #885588 ;
+letter-spacing : 10px ;
+font-family : "Comic Sans" ;
+} 
+
+#title { 
+font-size : 18px ;
+font-weight : bold ;
+color : #885588 ;
 font-family : "Comic Sans" ;
 } 
 

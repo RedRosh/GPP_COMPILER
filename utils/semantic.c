@@ -4,7 +4,7 @@
 
 void addWidgetToList()
 {
-    WIDGETNODE *new_node_widget = (WIDGETNODE *)malloc(sizeof(struct WIDGETNODE));
+    WIDGETNODE *new_node_widget = (WIDGETNODE *)calloc(1, sizeof(struct WIDGETNODE));
     WIDGETNODE *last = linkedWidgetList;
     new_node_widget->widget = getTheCurrentWidget();
     new_node_widget->next = NULL;
@@ -22,7 +22,7 @@ void addWidgetToList()
 
 void addOperationToList()
 {
-    OPERATIONNODE *new_node_operation = (OPERATIONNODE *)malloc(sizeof(struct OPERATIONNODE));
+    OPERATIONNODE *new_node_operation = (OPERATIONNODE *)calloc(1, sizeof(struct OPERATIONNODE));
     OPERATIONNODE *last = linkedOperationList;
 
     new_node_operation->operation = getTheCurrentOperation();

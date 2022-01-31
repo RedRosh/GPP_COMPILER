@@ -140,7 +140,7 @@ End
         * __Text__ : is the text inside the input field, and has a __VALUE__ of a **String**.
 
         * __PlaceHolder__ : is the default appearing text in the input field, and has a __VALUE__ of a **String**.
-        * __MaxLengthç__ : is the maximum length of the input, and has a __VALUE__ of a **positive Integer**.
+        * __MaxLength__ : is the maximum length of the input, and has a __VALUE__ of a **positive Integer**.
 
     * For the __Label__ widget :
         * __Text__ : is the text in the label, and has a __VALUE__ of a **String**.
@@ -153,7 +153,7 @@ End
 
 * __INTERFACE_NAME__ : is the name of your predefined **Interface** variable.
     
-    * __INERFACE_PROPERTY__ : is the property in which you want your interface to show up. It can be:
+    * __INTERFACE_PROPERTY__ : is the property in which you want your interface to show up. It can be:
         
         * __"CENTER"__ : if you want your interface to appear in the center of your string.
         

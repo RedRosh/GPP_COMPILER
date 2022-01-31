@@ -1,0 +1,80 @@
+Interface interface: {
+    Height : 500,
+    #This a comment ^^
+    Width  :500,
+    Title : "App",
+    BackgroundColor : "#aaa5d9" # Couleur violet
+};
+Label usernameLabel : {
+    Height : 20,
+    Width  :100,
+    Text : "Username",
+    Color :"black",
+    Opacity : 100
+};
+
+Label passwordLabel : {
+    Height : 20,
+    Width  :100,
+    Text : "Password",
+    Color :"black",
+    Opacity : 100
+};
+
+InputField usernameInput : {
+    Height : 30,
+    Width : 200,
+    PlaceHolder : "Enter your username",
+    Color :"black",
+    Opacity : 100
+};
+
+InputField passwordInput : {
+    Height : 30,
+    Width  : 200,
+    PlaceHolder : "Enter your password",
+    Color : "black",
+    Opacity : 100
+};
+
+Button button : {
+    Height : 30,
+    MinWidth : 50,
+    Width : 50,
+    Text : "Login",
+    BorderStyle : "dashed",
+    FontWeight: "bold"
+};
+
+Label thankyou : {
+    Height : 20,
+    Width  :100,
+    Text : "THANK YOU FOR USING GPP!",
+    Color :"#885588",
+    Opacity : 50,
+    LetterSpacing : 10,
+    FontSize: 18
+};
+
+Label title : {
+    Height : 20,
+    Width  :100,
+    Text : "Exemple de login",
+    Color :"#885588",
+    Opacity : 100 100,
+    FontWeight: "bold",
+    FontSize: 18
+};
+
+
+Begin
+Start interface "CENTER";
+Put title 160 75;
+Put usernameLabel 160 150;
+Put usernameInput 160 175;
+Put passwordLabel 160 240;
+Put passwordInput 160 265;
+Put button 295 305;
+Put thankyou 5 400;
+Show interface;
+End

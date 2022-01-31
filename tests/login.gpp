@@ -1,9 +1,9 @@
-#This a comment
 Interface interface: {
     Height : 500,
+    #This a comment ^^
     Width  :500,
     Title : "App",
-    BackgroundColor : "#aaa5d9"
+    BackgroundColor : "#aaa5d9" # Couleur violet
 };
 Label usernameLabel : {
     Height : 20,
